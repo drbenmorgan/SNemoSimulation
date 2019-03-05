@@ -640,13 +640,6 @@ namespace mctools {
   } // end of namespace g4
 } // end of namespace mctools
 
-/***************************
- * OCD support : interface *
- ***************************/
-
-#include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::manager)
-
 #endif // MCTOOLS_G4_MANAGER_H
 
 // Local Variables: --

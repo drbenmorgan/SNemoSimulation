@@ -13,15 +13,19 @@ configure_file(
   @ONLY
   )
 
-set(SNemoSimulationCore_HEADERS
+set(SNemoSimulationCore_SOURCES
   ${PROJECT_BINARY_DIR}/source/bxmctools/include/mctools/g4/data_libraries.h
+  SNemoSimulation/manager.h
+  SNemoSimulation/manager.cc
+  SNemoSimulation/manager_parameters.h
+  SNemoSimulation/manager_parameters.cc
+
   source/bxmctools/include/mctools/g4/tracking_action.h
   source/bxmctools/include/mctools/g4/particles_physics_constructor.h
   source/bxmctools/include/mctools/g4/stacking_action.h
   source/bxmctools/include/mctools/g4/simulation_ctrl.h
   source/bxmctools/include/mctools/g4/em_field_g4_utils.h
   source/bxmctools/include/mctools/g4/track_history.h
-  source/bxmctools/include/mctools/g4/manager.h
   source/bxmctools/include/mctools/g4/processes/utils.h
   source/bxmctools/include/mctools/g4/processes/em_model_factory.h
   source/bxmctools/include/mctools/g4/processes/em_extra_models.h
@@ -41,16 +45,12 @@ set(SNemoSimulationCore_HEADERS
   source/bxmctools/include/mctools/g4/run_action.h
   source/bxmctools/include/mctools/g4/stepping_verbose.h
   source/bxmctools/include/mctools/g4/sensitive_detector.h
-  source/bxmctools/include/mctools/g4/manager_parameters.h
   source/bxmctools/include/mctools/g4/physics_list_utils.h
   source/bxmctools/include/mctools/g4/sensitive_hit.h
   source/bxmctools/include/mctools/g4/base_physics_constructor.h
   source/bxmctools/include/mctools/g4/stepping_action.h
   source/bxmctools/include/mctools/g4/em_field_equation_of_motion.h
   source/bxmctools/include/mctools/g4/event_action.h
-  )
-
-set(SNemoSimulationCore_SOURCES
   source/bxmctools/src/g4/physics_list.cc
   source/bxmctools/src/g4/stacking_action.cc
   source/bxmctools/src/g4/neutrons_physics_constructor.cc
@@ -58,7 +58,6 @@ set(SNemoSimulationCore_SOURCES
   source/bxmctools/src/g4/base_physics_constructor.cc
   source/bxmctools/src/g4/sensitive_hit.cc
   source/bxmctools/src/g4/physics_list_utils.cc
-  source/bxmctools/src/g4/manager.cc
   source/bxmctools/src/g4/event_action.cc
   source/bxmctools/src/g4/stepping_action.cc
   source/bxmctools/src/g4/track_history.cc
@@ -78,7 +77,6 @@ set(SNemoSimulationCore_SOURCES
   source/bxmctools/src/g4/electromagnetic_field.cc
   source/bxmctools/src/g4/detector_construction.cc
   source/bxmctools/src/g4/g4_prng.cc
-  source/bxmctools/src/g4/manager_parameters.cc
   source/bxmctools/src/g4/sensitive_hit_collection.cc
   source/bxmctools/src/g4/em_field_equation_of_motion.cc
   source/bxmctools/src/g4/em_field_g4_stuff.cc
@@ -86,9 +84,10 @@ set(SNemoSimulationCore_SOURCES
   )
 
 # Add implementation library
-add_library(SNemoSimulationCore SHARED ${SNemoSimulationCore_HEADERS} ${SNemoSimulationCore_SOURCES})
+add_library(SNemoSimulationCore SHARED ${SNemoSimulationCore_SOURCES})
 target_include_directories(SNemoSimulationCore
   PUBLIC
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source/bxmctools/include>
     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/source/bxmctools/include>
     ${Geant4_INCLUDE_DIRS}

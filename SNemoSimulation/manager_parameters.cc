@@ -1,7 +1,7 @@
 /// \file mctools/g4/manager_parameters.cc
 
 // Ourselves:
-#include <mctools/g4/manager_parameters.h>
+#include "manager_parameters.h"
 
 // Third party:
 // - Boost:
@@ -18,7 +18,7 @@
 
 // This project:
 #include <mctools/utils.h>
-#include <mctools/g4/manager.h>
+#include "SNemoSimulation/manager.h"
 
 namespace mctools {
 
