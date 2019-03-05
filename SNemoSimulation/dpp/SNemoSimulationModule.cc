@@ -1,7 +1,7 @@
-/* simulation_module.cc */
+/* SNemoSimulationModule.cc */
 
 // Ourselves:
-#include <mctools/g4/simulation_module.h>
+#include "SNemoSimulationModule.h"
 
 // Standard library:
 #include <iostream>
@@ -31,11 +31,11 @@ namespace mctools {
 namespace g4 {
 
 // Registration instantiation macro :
-DPP_MODULE_REGISTRATION_IMPLEMENT(simulation_module, "mctools::g4::simulation_module")
+DPP_MODULE_REGISTRATION_IMPLEMENT(SNemoSimulationModule, "mctools::g4::SNemoSimulationModule")
 
 
 // Constructor :
-simulation_module::simulation_module (datatools::logger::priority logging_priority)
+SNemoSimulationModule::SNemoSimulationModule (datatools::logger::priority logging_priority)
   : dpp::base_module(logging_priority) {
   geometryServiceName_ = "";
   simdataBankName_ = "";
@@ -45,14 +45,14 @@ simulation_module::simulation_module (datatools::logger::priority logging_priori
 }
 
 // Destructor :
-simulation_module::~simulation_module () {
+SNemoSimulationModule::~SNemoSimulationModule () {
   // Make sure all internal resources are terminated
   // before destruction :
   if (is_initialized()) reset();
 }
 
 // Initialization :
-void simulation_module::initialize(const datatools::properties& config_,
+void SNemoSimulationModule::initialize(const datatools::properties& config_,
                                     datatools::service_manager& service_manager_,
                                     dpp::module_handle_dict_type& /*module_dict_*/) {
   DT_THROW_IF(is_initialized(),
@@ -225,7 +225,7 @@ void simulation_module::initialize(const datatools::properties& config_,
 }
 
 // Reset :
-void simulation_module::reset() {
+void SNemoSimulationModule::reset() {
   DT_THROW_IF(!is_initialized(), std::logic_error,
                "Module '" << get_name () << "' is not initialized !");
 
@@ -249,7 +249,7 @@ void simulation_module::reset() {
 
 // Processing :
 dpp::base_module::process_status
-simulation_module::process(datatools::things & event_record_) {
+SNemoSimulationModule::process(datatools::things & event_record_) {
   DT_THROW_IF (!this->is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is not initialized !");
   int status = this->_simulate_event(event_record_);
@@ -257,59 +257,59 @@ simulation_module::process(datatools::things & event_record_) {
 }
 
 
-void simulation_module::set_geo_label(const std::string & geo_) {
+void SNemoSimulationModule::set_geo_label(const std::string & geo_) {
   DT_THROW_IF (is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is already initialized !");
   geometryServiceName_ = geo_;
 }
 
-const std::string & simulation_module::get_geo_label() const {
+const std::string & SNemoSimulationModule::get_geo_label() const {
   return geometryServiceName_;
 }
 
-void simulation_module::set_sd_label(const std::string & sd_) {
+void SNemoSimulationModule::set_sd_label(const std::string & sd_) {
   DT_THROW_IF (is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is already initialized !");
   simdataBankName_ = sd_;
 }
 
-const std::string & simulation_module::get_sd_label() const {
+const std::string & SNemoSimulationModule::get_sd_label() const {
   return simdataBankName_;
 }
 
 
-void simulation_module::set_geometry_manager(const geomtools::manager & geometry_manager_) {
+void SNemoSimulationModule::set_geometry_manager(const geomtools::manager & geometry_manager_) {
   DT_THROW_IF (geometryManagerRef_ != 0 && geometryManagerRef_->is_initialized (),
                std::logic_error,
                "Embedded geometry manager is already initialized !");
   geometryManagerRef_ = &geometry_manager_;
 }
 
-void simulation_module::set_geant4_parameters(const manager_parameters & params_) {
+void SNemoSimulationModule::set_geant4_parameters(const manager_parameters & params_) {
   DT_THROW_IF (is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is already initialized !");
   geant4Parameters_ = params_;
 }
 
-const manager_parameters& simulation_module::get_geant4_parameters() const {
+const manager_parameters& SNemoSimulationModule::get_geant4_parameters() const {
   return geant4Parameters_;
 }
 
-const mygsl::seed_manager& simulation_module::get_seed_manager() const
+const mygsl::seed_manager& SNemoSimulationModule::get_seed_manager() const
 {
   DT_THROW_IF (!is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is not initialized !");
   return geant4Simulation_->get_seed_manager();
 }
 
-const mygsl::prng_state_manager& simulation_module::get_state_manager() const
+const mygsl::prng_state_manager& SNemoSimulationModule::get_state_manager() const
 {
   DT_THROW_IF (!is_initialized (), std::logic_error,
                "Module '" << get_name () << "' is not initialized !");
   return geant4Simulation_->get_state_manager();
 }
 
-void simulation_module::_initialize_manager(datatools::service_manager& smgr_) {
+void SNemoSimulationModule::_initialize_manager(datatools::service_manager& smgr_) {
   // Allocate the simulation manager :
   geant4Simulation_ = new manager;
 
@@ -332,7 +332,7 @@ void simulation_module::_initialize_manager(datatools::service_manager& smgr_) {
                                          *geant4Simulation_);
 }
 
-void simulation_module::_terminate_manager() {
+void SNemoSimulationModule::_terminate_manager() {
   if (geant4SimulationController_ != 0) {
     delete geant4SimulationController_;
     geant4SimulationController_ = 0;
@@ -346,7 +346,7 @@ void simulation_module::_terminate_manager() {
   geant4Parameters_.reset ();
 }
 
-int simulation_module::_simulate_event(datatools::things& workItem) {
+int SNemoSimulationModule::_simulate_event(datatools::things& workItem) {
   // Bank name must be unique
   DT_THROW_IF(workItem.has(simdataBankName_),
               std::runtime_error,
@@ -357,72 +357,28 @@ int simulation_module::_simulate_event(datatools::things& workItem) {
 
   {
     {
-      DT_LOG_TRACE(get_logging_priority(),
-                   "Acquire the event control lock...");
       boost::mutex::scoped_lock lock(*geant4SimulationController_->event_mutex);
 
       if (geant4SimulationController_->simulation_thread == 0) {
-        DT_LOG_TRACE(get_logging_priority(),
-                     "Starting the G4 simulation manager from its own thread...");
         geant4SimulationController_->start();
-        DT_LOG_TRACE(get_logging_priority(),
-                     "G4 simulation manager thread started.");
-        DT_LOG_TRACE(get_logging_priority(),
-                     "Now wait for G4 to run an event...");
       }
-      DT_LOG_TRACE(get_logging_priority(),
-                   "Notify that event control is now available for the G4 simulation thread...");
       geant4SimulationController_->event_availability_status = simulation_ctrl::AVAILABLE_FOR_G4;
       geant4SimulationController_->event_available_condition->notify_one();
     }
 
     // Wait for the release of the event control by the G4 process :
     {
-      DT_LOG_TRACE(get_logging_priority(),
-                   "Wait for the release of the event control by the G4 simulation thread...");
       boost::mutex::scoped_lock lock(*geant4SimulationController_->event_mutex);
+
       while (geant4SimulationController_->event_availability_status == simulation_ctrl::AVAILABLE_FOR_G4) {
         geant4SimulationController_->event_available_condition->wait(*geant4SimulationController_->event_mutex);
       }
-      DT_LOG_TRACE(get_logging_priority(),
-                   "Ok ! The event control is released by the G4 simulation thread...");
     }
   }
   return 0;
 }
 }  // end of namespace g4
 }  // end of namespace mctools
-
-// OCD support for class 'mctools::g4::simulation_module' :
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(::mctools::g4::simulation_module,ocd_)
-{
-  ocd_.set_class_name("mctools::g4::simulation_module");
-  ocd_.set_class_library("mctools_g4");
-  ocd_.set_class_description("A module to generate Monte-Carlo events through the Geant4 library");
-
-  ocd_.set_configuration_hints("A ``mctools::g4::simulation_module`` object can be setup with the    \n"
-                               "following syntax in a ``datatools::multi_properties`` configuration  \n"
-                               "file, typically from a module manager object.                        \n"
-                               "                                                                     \n"
-                               "Example::                                                            \n"
-                               "                                                                     \n"
-                               "  #@description A module that generates raw data                     \n"
-                               "  #@key_label   \"name\"                                             \n"
-                               "  #@meta_label  \"type\"                                             \n"
-                               "                                                                     \n"
-                               "  [name=\"g4sim\" type=\"mctools::g4::simulation_module\"]           \n"
-                               "  #@config A Geant4 simulation module                                \n"
-                               "  foo : string = \"bar\"                                             \n"
-                               "                                                                     \n"
-                               );
-
-  ocd_.set_validation_support(false);
-  ocd_.lock();
-  return;
-}
-DOCD_CLASS_IMPLEMENT_LOAD_END()
-DOCD_CLASS_SYSTEM_REGISTRATION(::mctools::g4::simulation_module,"mctools::g4::simulation_module")
-
 /*
 ** Local Variables: --
 ** mode: c++ --

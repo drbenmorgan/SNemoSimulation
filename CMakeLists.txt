@@ -13,12 +13,11 @@ configure_file(
   @ONLY
   )
 
-set(SNemoSimulation_HEADERS
+set(SNemoSimulationCore_HEADERS
   ${PROJECT_BINARY_DIR}/source/bxmctools/include/mctools/g4/data_libraries.h
   source/bxmctools/include/mctools/g4/tracking_action.h
   source/bxmctools/include/mctools/g4/particles_physics_constructor.h
   source/bxmctools/include/mctools/g4/stacking_action.h
-  source/bxmctools/include/mctools/g4/simulation_module.h
   source/bxmctools/include/mctools/g4/simulation_ctrl.h
   source/bxmctools/include/mctools/g4/em_field_g4_utils.h
   source/bxmctools/include/mctools/g4/track_history.h
@@ -51,11 +50,10 @@ set(SNemoSimulation_HEADERS
   source/bxmctools/include/mctools/g4/event_action.h
   )
 
-set(SNemoSimulation_SOURCES
+set(SNemoSimulationCore_SOURCES
   source/bxmctools/src/g4/physics_list.cc
   source/bxmctools/src/g4/stacking_action.cc
   source/bxmctools/src/g4/neutrons_physics_constructor.cc
-  source/bxmctools/src/g4/simulation_module.cc
   source/bxmctools/src/g4/em_physics_constructor.cc
   source/bxmctools/src/g4/base_physics_constructor.cc
   source/bxmctools/src/g4/sensitive_hit.cc
@@ -87,15 +85,22 @@ set(SNemoSimulation_SOURCES
   source/bxmctools/src/g4/stepping_verbose.cc
   )
 
-# Add library
-add_library(SNemoSimulation SHARED ${SNemoSimulation_HEADERS} ${SNemoSimulation_SOURCES})
-target_include_directories(SNemoSimulation
+# Add implementation library
+add_library(SNemoSimulationCore SHARED ${SNemoSimulationCore_HEADERS} ${SNemoSimulationCore_SOURCES})
+target_include_directories(SNemoSimulationCore
   PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source/bxmctools/include>
     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/source/bxmctools/include>
     ${Geant4_INCLUDE_DIRS}
     )
-target_link_libraries(SNemoSimulation Bayeux::Bayeux ${Geant4_LIBRARIES})
+target_link_libraries(SNemoSimulationCore Bayeux::Bayeux ${Geant4_LIBRARIES})
+
+# Add DPP module library
+add_library(SNemoSimulationModule SHARED
+  SNemoSimulation/dpp/SNemoSimulationModule.h
+  SNemoSimulation/dpp/SNemoSimulationModule.cc
+  )
+target_link_libraries(SNemoSimulationModule PRIVATE SNemoSimulationCore)
 
 # As a loadable module, probably only need to install
 # lib(s) (Module interface + implementation library).

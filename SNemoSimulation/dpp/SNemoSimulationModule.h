@@ -1,4 +1,4 @@
-/// \file mctools/g4/simulation_module.h
+/// \file mctools/g4/SNemoSimulationModule.h
 /* Author(s)     : Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date : 2011-07-04
  * Last modified : 2013-12-13
@@ -36,13 +36,13 @@ class manager;
 class simulation_ctrl;
 
 /// \brief The Geant4 simulation module based on Bayeux/dpp API
-class simulation_module : public dpp::base_module {
+class SNemoSimulationModule : public dpp::base_module {
  public:
   /// Constructor
-  simulation_module(datatools::logger::priority logging_priority = datatools::logger::PRIO_FATAL);
+  SNemoSimulationModule(datatools::logger::priority logging_priority = datatools::logger::PRIO_FATAL);
 
   /// Destructor
-  virtual ~simulation_module();
+  virtual ~SNemoSimulationModule();
 
   /// Initialization
   virtual void initialize(const datatools::properties & /* config_ */,
@@ -100,16 +100,12 @@ class simulation_module : public dpp::base_module {
   simulation_ctrl*   geant4SimulationController_; //!< The embedded control object for thread synchronization
 
   // Registration of the module :
-  DPP_MODULE_REGISTRATION_INTERFACE(simulation_module)
+  DPP_MODULE_REGISTRATION_INTERFACE(SNemoSimulationModule)
 };
 
 }  // end of namespace g4
 
 }  // end of namespace mctools
-
-// Object configuration description (OCD) support :
-#include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::simulation_module)
 
 #endif // MCTOOLS_G4_SIMULATION_MODULE_H
 
