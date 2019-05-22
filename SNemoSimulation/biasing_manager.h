@@ -1,4 +1,4 @@
-/// \file mctools/g4/biasing_manager.h
+/// \file SNemoSimulation/biasing_manager.h
 /* Author(s) :  Arnaud Chapon <chapon@lpccaen.in2p3.fr>
  *              François Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2014-11-20

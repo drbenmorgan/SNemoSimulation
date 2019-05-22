@@ -1,4 +1,4 @@
-/// \file mctools/g4/em_field_equation_of_motion.h
+/// \file SNemoSimulation/em_field_equation_of_motion.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2015-08-27
  * Last modified: 2015-09-01
@@ -21,7 +21,7 @@
 #include <G4EquationOfMotion.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 class G4Field;
 

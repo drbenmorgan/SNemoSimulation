@@ -1,7 +1,7 @@
 // em_field_g4_stuff.cc
 
 // Ourselves:
-#include <mctools/g4/em_field_g4_stuff.h>
+#include <SNemoSimulation/em_field_g4_stuff.h>
 
 // Third party:
 // - Geant4:
@@ -51,9 +51,9 @@
 #include <datatools/logger.h>
 
 // This project:
-#include <mctools/g4/magnetic_field.h>
-#include <mctools/g4/electromagnetic_field.h>
-#include <mctools/g4/em_field_equation_of_motion.h>
+#include <SNemoSimulation/magnetic_field.h>
+#include <SNemoSimulation/electromagnetic_field.h>
+#include <SNemoSimulation/em_field_equation_of_motion.h>
 
 namespace mctools {
 

@@ -1,4 +1,4 @@
-/// \file mctools/g4/manager.cc
+/// \file SNemoSimulation/manager.cc
 /*
  * Copyright (C) 2011-2016 Francois Mauger <mauger@lpccaen.in2p3.fr>
  *
@@ -52,16 +52,16 @@
 #include <genbb_help/i_genbb.h>
 
 // This project:
-#include <mctools/g4/run_action.h>
-#include <mctools/g4/event_action.h>
-#include <mctools/g4/detector_construction.h>
-#include <mctools/g4/primary_generator.h>
-#include <mctools/g4/physics_list.h>
-#include <mctools/g4/tracking_action.h>
-#include <mctools/g4/stepping_action.h>
-#include <mctools/g4/stacking_action.h>
-#include <mctools/g4/simulation_ctrl.h>
-#include <mctools/g4/data_libraries.h>
+#include <SNemoSimulation/run_action.h>
+#include <SNemoSimulation/event_action.h>
+#include <SNemoSimulation/detector_construction.h>
+#include <SNemoSimulation/primary_generator.h>
+#include <SNemoSimulation/physics_list.h>
+#include <SNemoSimulation/tracking_action.h>
+#include <SNemoSimulation/stepping_action.h>
+#include <SNemoSimulation/stacking_action.h>
+#include <SNemoSimulation/simulation_ctrl.h>
+#include <SNemoSimulation/data_libraries.h>
 
 // G4 stuff:
 #include <globals.hh>

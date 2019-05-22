@@ -1,4 +1,4 @@
-/// \file mctools/g4/em_physics_constructor.h
+/// \file SNemoSimulation/em_physics_constructor.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2013-07-03
  * Last modified: 2015-09-02
@@ -19,7 +19,7 @@
 #define MCTOOLS_G4_EM_PHYSICS_CONSTRUCTOR_H 1
 
 // This project:
-#include <mctools/g4/base_physics_constructor.h>
+#include <SNemoSimulation/base_physics_constructor.h>
 
 // Third party:
 // - Boost:

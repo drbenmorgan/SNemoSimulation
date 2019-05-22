@@ -24,7 +24,7 @@
 #include <G4UserStackingAction.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 class G4Track;
 class G4LogicalVolume;

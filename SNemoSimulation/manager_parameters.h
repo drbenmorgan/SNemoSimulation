@@ -1,4 +1,4 @@
-/// \file mctools/g4/manager_parameters.h
+/// \file SNemoSimulation/manager_parameters.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-02-16
  * Last modified: 2016-06-27

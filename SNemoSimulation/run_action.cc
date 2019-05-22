@@ -1,7 +1,7 @@
 // run_action.cc
 
 // Ourselves:
-#include <mctools/g4/run_action.h>
+#include <SNemoSimulation/run_action.h>
 
 // Standard library:
 #include <cstdlib>
@@ -55,9 +55,9 @@
 #include <mctools/simulated_data.h>
 #include <mctools/mctools_config.h>
 #include <mctools/utils.h>
-#include <mctools/g4/event_action.h>
-#include <mctools/g4/manager.h>
-#include <mctools/g4/simulation_ctrl.h>
+#include <SNemoSimulation/event_action.h>
+#include <SNemoSimulation/manager.h>
+#include <SNemoSimulation/simulation_ctrl.h>
 
 namespace mctools {
   namespace g4 {

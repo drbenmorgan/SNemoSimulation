@@ -1,4 +1,4 @@
-/// \file mctools/g4/physics_list.h
+/// \file SNemoSimulation/physics_list.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-04-10
  * Last modified: 2015-04-30
@@ -29,9 +29,9 @@
 #include "G4VModularPhysicsList.hh"
 
 // This project:
-#include <mctools/g4/loggable_support.h>
-#include <mctools/g4/physics_list_utils.h>
-#include <mctools/g4/base_physics_constructor.h>
+#include <SNemoSimulation/loggable_support.h>
+#include <SNemoSimulation/physics_list_utils.h>
+#include <SNemoSimulation/base_physics_constructor.h>
 
 namespace datatools {
   class properties;

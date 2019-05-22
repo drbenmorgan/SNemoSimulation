@@ -1,4 +1,4 @@
-/// \file mctools/g4/electromagnetic_field.h
+/// \file SNemoSimulation/electromagnetic_field.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2014-12-08
  * Last modified: 2015-04-20
@@ -29,7 +29,7 @@
 #include <geomtools/smart_id_locator.h>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 // Forward class declarations:
 namespace datatools {

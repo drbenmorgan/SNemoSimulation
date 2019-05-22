@@ -5,7 +5,7 @@
  */
 
 // Ourselves:
-#include <mctools/g4/em_physics_constructor.h>
+#include <SNemoSimulation/em_physics_constructor.h>
 
 // Standard library:
 #include <stdexcept>
@@ -98,8 +98,8 @@
 #include <G4EmConfigurator.hh>
 
 // This project:
-#include <mctools/g4/processes/em_extra_models.h>
-#include <mctools/g4/processes/em_model_factory.h>
+#include <SNemoSimulation/processes/em_extra_models.h>
+#include <SNemoSimulation/processes/em_model_factory.h>
 
 namespace mctools {
 

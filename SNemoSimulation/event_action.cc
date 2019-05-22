@@ -1,7 +1,7 @@
 // event_action.cc
 
 // Ourselves:
-#include <mctools/g4/event_action.h>
+#include <SNemoSimulation/event_action.h>
 
 // Standard library:
 #include <cstdlib>
@@ -35,13 +35,13 @@
 
 // This project:
 #include <mctools/simulated_data.ipp>
-#include <mctools/g4/run_action.h>
-#include <mctools/g4/detector_construction.h>
-#include <mctools/g4/simulation_ctrl.h>
-#include <mctools/g4/run_action.h>
-#include <mctools/g4/detector_construction.h>
-#include <mctools/g4/sensitive_detector.h>
-#include <mctools/g4/manager.h>
+#include <SNemoSimulation/run_action.h>
+#include <SNemoSimulation/detector_construction.h>
+#include <SNemoSimulation/simulation_ctrl.h>
+#include <SNemoSimulation/run_action.h>
+#include <SNemoSimulation/detector_construction.h>
+#include <SNemoSimulation/sensitive_detector.h>
+#include <SNemoSimulation/manager.h>
 #include <mctools/biasing/primary_event_bias.h>
 
 namespace mctools {

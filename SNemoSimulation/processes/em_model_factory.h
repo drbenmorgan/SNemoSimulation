@@ -1,4 +1,4 @@
-/// \file mctools/g4/processes/em_model_factory.h
+/// \file SNemoSimulation/processes/em_model_factory.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2015-09-03
  * Last modified: 2015-09-04

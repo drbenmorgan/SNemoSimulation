@@ -1,4 +1,4 @@
-/// \file mctools/g4/loggable_support.h
+/// \file SNemoSimulation/loggable_support.h
 /* Author(s)     : Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date : 2013-06-03
  * Last modified : 2013-06-03

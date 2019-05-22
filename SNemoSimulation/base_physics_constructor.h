@@ -1,4 +1,4 @@
-/// \file mctools/g4/base_physics_constructor.h
+/// \file SNemoSimulation/base_physics_constructor.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2013-07-03
  * Last modified: 2015-04-30
@@ -29,8 +29,8 @@
 #include <globals.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
-#include <mctools/g4/physics_list_utils.h>
+#include <SNemoSimulation/loggable_support.h>
+#include <SNemoSimulation/physics_list_utils.h>
 
 namespace mctools {
 

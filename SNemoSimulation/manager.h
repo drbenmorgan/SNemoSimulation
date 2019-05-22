@@ -1,4 +1,4 @@
-/// \file mctools/g4/manager.h
+/// \file SNemoSimulation/manager.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-05-04
  * Last modified: 2016-06-28
@@ -58,7 +58,7 @@
 // This project:
 #include <mctools/mctools_config.h>
 #include <mctools/utils.h>
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 namespace genvtx {
   class manager;
@@ -69,8 +69,8 @@ namespace genbb {
   class i_genbb;
 }
 
-#include <mctools/g4/g4_prng.h>
-#include <mctools/g4/track_history.h>
+#include <SNemoSimulation/g4_prng.h>
+#include <SNemoSimulation/track_history.h>
 
 #ifdef G4VIS_USE
 // #pragma message("NOTE: G4VIS_USE is set: declaring class 'G4VisManager'...")

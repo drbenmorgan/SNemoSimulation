@@ -1,7 +1,7 @@
 /// \file mctools/detector_construction.cc
 
 // Ourselves:
-#include <mctools/g4/detector_construction.h>
+#include <SNemoSimulation/detector_construction.h>
 
 // Standard library:
 #include <clocale>
@@ -54,12 +54,12 @@
 #pragma clang diagnostic pop
 #endif
 // This project:
-#include <mctools/g4/sensitive_detector.h>
-#include <mctools/g4/magnetic_field.h>
-#include <mctools/g4/electromagnetic_field.h>
-#include <mctools/g4/manager.h>
-#include <mctools/g4/biasing_manager.h>
-#include <mctools/g4/em_field_g4_stuff.h>
+#include <SNemoSimulation/sensitive_detector.h>
+#include <SNemoSimulation/magnetic_field.h>
+#include <SNemoSimulation/electromagnetic_field.h>
+#include <SNemoSimulation/manager.h>
+#include <SNemoSimulation/biasing_manager.h>
+#include <SNemoSimulation/em_field_g4_stuff.h>
 
 namespace mctools {
 

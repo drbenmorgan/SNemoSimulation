@@ -1,4 +1,4 @@
-/// \file mctools/g4/em_field_g4_utils.h
+/// \file SNemoSimulation/em_field_g4_utils.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2015-04-20
  * Last modified: 2015-04-20

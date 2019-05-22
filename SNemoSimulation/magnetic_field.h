@@ -1,4 +1,4 @@
-/// \file mctools/g4/magnetic_field.h
+/// \file SNemoSimulation/magnetic_field.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-06-19
  * Last modified: 2013-03-09
@@ -28,7 +28,7 @@
 #include <G4MagneticField.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 namespace datatools {
   class properties;

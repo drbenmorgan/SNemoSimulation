@@ -23,7 +23,7 @@
 #include <G4UserTrackingAction.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 namespace datatools {
   class properties;

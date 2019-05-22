@@ -1,4 +1,4 @@
-/// \file mctools/g4/primary_generator.h
+/// \file SNemoSimulation/primary_generator.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-04-10
  * Last modified: 2013-03-09
@@ -29,7 +29,7 @@
 #include <geomtools/utils.h>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 class G4ParticleGun;
 class G4Event;

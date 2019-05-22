@@ -1,4 +1,4 @@
-// \file mctools/g4/region_tools.h
+// \file SNemoSimulation/region_tools.h
 /* Author(s) :  François Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2015-09-05
  * Last modified: 2015-09-05

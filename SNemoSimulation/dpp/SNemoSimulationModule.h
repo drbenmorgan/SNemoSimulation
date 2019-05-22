@@ -1,4 +1,4 @@
-/// \file mctools/g4/SNemoSimulationModule.h
+/// \file SNemoSimulation/SNemoSimulationModule.h
 /* Author(s)     : Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date : 2011-07-04
  * Last modified : 2013-12-13
@@ -19,7 +19,7 @@
 #include <mygsl/prng_state_manager.h>
 
 // This project:
-#include <mctools/g4/manager_parameters.h>
+#include <SNemoSimulation/manager_parameters.h>
 
 namespace geomtools {
 // Forward declaration :

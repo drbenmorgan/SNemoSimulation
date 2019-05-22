@@ -1,4 +1,4 @@
-/// \file mctools/g4/sensitive_detector.h
+/// \file SNemoSimulation/sensitive_detector.h
 /* Author(s) :     Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-05-26
  * Last modified: 2013-03-09
@@ -40,10 +40,10 @@
 
 // This project:
 #include <mctools/base_step_hit_processor.h>
-#include <mctools/g4/sensitive_hit.h>
-#include <mctools/g4/sensitive_hit_collection.h>
-#include <mctools/g4/track_history.h>
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/sensitive_hit.h>
+#include <SNemoSimulation/sensitive_hit_collection.h>
+#include <SNemoSimulation/track_history.h>
+#include <SNemoSimulation/loggable_support.h>
 
 class G4Step;
 

@@ -1,4 +1,4 @@
-/// \file mctools/g4/sensitive_hit.h
+/// \file SNemoSimulation/sensitive_hit.h
 /* Author(s)     : Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date : 2010-05-26
  * Last modified : 2013-06-03

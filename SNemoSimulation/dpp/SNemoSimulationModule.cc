@@ -23,9 +23,9 @@
 #include <mctools/utils.h>
 
 // This project:
-#include <mctools/g4/manager.h>
-#include <mctools/g4/event_action.h>
-#include <mctools/g4/simulation_ctrl.h>
+#include <SNemoSimulation/manager.h>
+#include <SNemoSimulation/event_action.h>
+#include <SNemoSimulation/simulation_ctrl.h>
 
 namespace mctools {
 namespace g4 {

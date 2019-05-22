@@ -1,4 +1,4 @@
-/// \file mctools/g4/g4_prng.h
+/// \file SNemoSimulation/g4_prng.h
 /* Author(s)     :     Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date : 2011-02-26
  * Last modified : 2013-03-09

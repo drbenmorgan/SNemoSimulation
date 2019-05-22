@@ -1,7 +1,7 @@
 // stepping_verbose.cc
 
 // Ourselves:
-#include <mctools/g4/stepping_verbose.h>
+#include <SNemoSimulation/stepping_verbose.h>
 
 // Third party:
 // - Geant4:

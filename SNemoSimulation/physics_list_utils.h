@@ -1,4 +1,4 @@
-/// \file mctools/g4/physics_list_utils.h
+/// \file SNemoSimulation/physics_list_utils.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2013-07-04
  * Last modified: 2013-07-04

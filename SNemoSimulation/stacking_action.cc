@@ -32,7 +32,7 @@
 #include <G4LogicalVolumeStore.hh>
 
 // This project:
-#include <mctools/g4/stacking_action.h>
+#include <SNemoSimulation/stacking_action.h>
 
 namespace mctools {
 

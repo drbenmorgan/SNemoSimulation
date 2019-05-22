@@ -1,7 +1,7 @@
 // primary_generator.cc
 
 // Ourselves:
-#include <mctools/g4/primary_generator.h>
+#include <SNemoSimulation/primary_generator.h>
 
 // Standard library:
 #include <iostream>
@@ -54,9 +54,9 @@
 #include <G4Alpha.hh>
 
 // This project:
-#include <mctools/g4/manager.h>
-#include <mctools/g4/run_action.h>
-#include <mctools/g4/event_action.h>
+#include <SNemoSimulation/manager.h>
+#include <SNemoSimulation/run_action.h>
+#include <SNemoSimulation/event_action.h>
 #include <mctools/biasing/primary_event_bias.h>
 
 namespace mctools {

@@ -1,7 +1,7 @@
 /// \file mctools/biasing_manager.cc
 
 // Ourselves:
-#include <mctools/g4/biasing_manager.h>
+#include <SNemoSimulation/biasing_manager.h>
 
 // - Bayeux/datatools :
 #include <datatools/properties.h>
@@ -9,7 +9,7 @@
 #include <datatools/exception.h>
 
 // This project:
-#include <mctools/g4/detector_construction.h>
+#include <SNemoSimulation/detector_construction.h>
 
 namespace mctools {
 

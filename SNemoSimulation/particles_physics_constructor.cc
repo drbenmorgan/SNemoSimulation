@@ -1,7 +1,7 @@
 // particles_physics_constructor.cc
 
 // Ourselves:
-#include <mctools/g4/particles_physics_constructor.h>
+#include <SNemoSimulation/particles_physics_constructor.h>
 
 // Standard library:
 #include <stdexcept>

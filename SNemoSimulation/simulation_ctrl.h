@@ -20,7 +20,7 @@
 #include <boost/cstdint.hpp>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 namespace mctools {
 namespace g4 {

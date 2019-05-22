@@ -1,4 +1,4 @@
-/// \file mctools/g4/event_action.h
+/// \file SNemoSimulation/event_action.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-04-10
  * Last modified: 2015-09-14
@@ -23,7 +23,7 @@
 // This project:
 #include <mctools/simulated_data.h>
 #include <mctools/base_step_hit_processor.h>
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 namespace datatools {
   // Forward declaration:

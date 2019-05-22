@@ -6,7 +6,7 @@
 #include <iostream>
 
 // Ourselves:
-#include <mctools/g4/sensitive_hit.h>
+#include <SNemoSimulation/sensitive_hit.h>
 
 namespace mctools {
 

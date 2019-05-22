@@ -1,4 +1,4 @@
-/// \file mctools/g4/em_field_g4_stuff.h
+/// \file SNemoSimulation/em_field_g4_stuff.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2015-04-20
  * Last modified: 2015-04-20
@@ -17,7 +17,7 @@
 #define MCTOOLS_G4_EM_FIELD_G4_STUFF_H
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 
 // Third party:
 // - Bayeux/datatools :

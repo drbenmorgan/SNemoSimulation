@@ -1,7 +1,7 @@
 // physics_list_utils.cc
 
 // Ourselves:
-#include <mctools/g4/physics_list_utils.h>
+#include <SNemoSimulation/physics_list_utils.h>
 
 // Third party:
 // - Bayeux/datatools:
@@ -9,7 +9,7 @@
 #include <datatools/exception.h>
 
 // This project:
-#include <mctools/g4/base_physics_constructor.h>
+#include <SNemoSimulation/base_physics_constructor.h>
 
 namespace mctools {
 

@@ -1,4 +1,4 @@
-/// \file mctools/g4/manager_parameters.cc
+/// \file SNemoSimulation/manager_parameters.cc
 
 // Ourselves:
 #include "manager_parameters.h"

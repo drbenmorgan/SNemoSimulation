@@ -21,8 +21,8 @@
 #include <geomtools/material.h>
 
 // This project:
-#include <mctools/g4/sensitive_detector.h>
-#include <mctools/g4/manager.h>
+#include <SNemoSimulation/sensitive_detector.h>
+#include <SNemoSimulation/manager.h>
 #include <mctools/utils.h>
 
 // G4 stuff:

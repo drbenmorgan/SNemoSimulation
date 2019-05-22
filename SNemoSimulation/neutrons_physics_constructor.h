@@ -1,4 +1,4 @@
-/// \file mctools/g4/neutrons_physics_constructor.h
+/// \file SNemoSimulation/neutrons_physics_constructor.h
 /* Author(s) :    Arnaud Chapon <chapon@lpccaen.in2p3.fr>
  * Creation date: 2014-08-26
  * Last modified: 2014-09-04
@@ -18,7 +18,7 @@
 #define MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H 1
 
 // This project:
-#include <mctools/g4/base_physics_constructor.h>
+#include <SNemoSimulation/base_physics_constructor.h>
 
 namespace mctools {
 

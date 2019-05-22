@@ -1,4 +1,4 @@
-/// \file mctools/g4/run_action.h
+/// \file SNemoSimulation/run_action.h
 /* Author(s) :    Francois Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-04-10
  * Last modified: 2013-03-09
@@ -32,7 +32,7 @@
 #include <G4UserRunAction.hh>
 
 // This project:
-#include <mctools/g4/loggable_support.h>
+#include <SNemoSimulation/loggable_support.h>
 #include <mctools/utils.h>
 
 namespace datatools {

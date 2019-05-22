@@ -3,7 +3,7 @@
 // http://drdobbs.com/cpp/184401518
 
 // Ourselves:
-#include <mctools/g4/simulation_ctrl.h>
+#include <SNemoSimulation/simulation_ctrl.h>
 
 // Standard library:
 #include <cstdlib>
@@ -15,7 +15,7 @@
 #include <datatools/exception.h>
 
 // This project:
-#include <mctools/g4/manager.h>
+#include <SNemoSimulation/manager.h>
 
 namespace mctools {
 namespace g4 {

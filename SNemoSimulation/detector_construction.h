@@ -1,4 +1,4 @@
-/// \file mctools/g4/detector_construction.h
+/// \file SNemoSimulation/detector_construction.h
 /* Author(s) :  Benoit Guillon <guillon@lpccaen.in2p3.fr>
  *              François Mauger <mauger@lpccaen.in2p3.fr>
  * Creation date: 2010-05-04
@@ -35,8 +35,8 @@
 
 // This project:
 #include <mctools/step_hit_processor_factory.h>
-#include <mctools/g4/loggable_support.h>
-#include <mctools/g4/region_tools.h>
+#include <SNemoSimulation/loggable_support.h>
+#include <SNemoSimulation/region_tools.h>
 
 class G4UserLimits;
 class G4VisAttributes;
