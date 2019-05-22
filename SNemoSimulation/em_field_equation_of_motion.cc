@@ -21,7 +21,8 @@ namespace mctools {
 
   namespace g4 {
 
-    void em_field_equation_of_motion::_set_defaults()
+    void
+    em_field_equation_of_motion::_set_defaults()
     {
       _with_spin_ = false;
       _only_magnetic_ = false;
@@ -55,7 +56,7 @@ namespace mctools {
     }
     */
 
-    em_field_equation_of_motion::em_field_equation_of_motion(G4Field * em_field_)
+    em_field_equation_of_motion::em_field_equation_of_motion(G4Field* em_field_)
       : G4EquationOfMotion(em_field_)
     {
       // std::cerr << "DEVEL: " << "mctools::g4::em_field_equation_of_motion::CTOR: "
@@ -73,51 +74,55 @@ namespace mctools {
       return;
     }
 
-    void em_field_equation_of_motion::set_anomaly(double a_)
+    void
+    em_field_equation_of_motion::set_anomaly(double a_)
     {
       _anomaly_ = a_;
       return;
     }
 
-    double em_field_equation_of_motion::get_anomaly() const
+    double
+    em_field_equation_of_motion::get_anomaly() const
     {
       return _anomaly_;
     }
 
-    void em_field_equation_of_motion::set_with_spin(bool ws_)
+    void
+    em_field_equation_of_motion::set_with_spin(bool ws_)
     {
       _with_spin_ = ws_;
       return;
     }
 
-    void em_field_equation_of_motion::set_only_magnetic(bool om_)
+    void
+    em_field_equation_of_motion::set_only_magnetic(bool om_)
     {
       _only_magnetic_ = om_;
       return;
     }
 
-    bool em_field_equation_of_motion::is_only_magnetic() const
+    bool
+    em_field_equation_of_motion::is_only_magnetic() const
     {
       return _only_magnetic_;
     }
 
-    bool em_field_equation_of_motion::is_with_spin() const
+    bool
+    em_field_equation_of_motion::is_with_spin() const
     {
       return _with_spin_;
     }
 
-    void em_field_equation_of_motion::SetChargeMomentumMass(G4double particle_charge_, // in e+ units
-                                                            G4double particle_momentum_,
-                                                            G4double particle_mass_)
+    void
+    em_field_equation_of_motion::SetChargeMomentumMass(G4double particle_charge_, // in e+ units
+                                                       G4double particle_momentum_,
+                                                       G4double particle_mass_)
     {
       DT_LOG_TRACE_ENTERING(_logprio());
 
-      DT_LOG_DEBUG(_logprio(),
-                   " -> Particle charge = " << particle_charge_ / CLHEP::eplus << "e ");
-      DT_LOG_DEBUG(_logprio(),
-                   " -> Momentum = " << particle_momentum_ / CLHEP::MeV << " MeV");
-      DT_LOG_DEBUG(_logprio(),
-                   " -> Mass = " << particle_mass_ / CLHEP::MeV << " MeV");
+      DT_LOG_DEBUG(_logprio(), " -> Particle charge = " << particle_charge_ / CLHEP::eplus << "e ");
+      DT_LOG_DEBUG(_logprio(), " -> Momentum = " << particle_momentum_ / CLHEP::MeV << " MeV");
+      DT_LOG_DEBUG(_logprio(), " -> Mass = " << particle_mass_ / CLHEP::MeV << " MeV");
 
       _mass_ = particle_mass_;
       _charge_ = particle_charge_;
@@ -127,7 +132,7 @@ namespace mctools {
       _mass_sqr_ = _mass_ * _mass_;
       _omegac_ = (CLHEP::eplus / _mass_) * CLHEP::c_light;
       _energy_ = std::sqrt(_momentum_ * _momentum_ + _mass_sqr_);
-      _beta_  = _momentum_ / _energy_;
+      _beta_ = _momentum_ / _energy_;
       _gamma_ = _energy_ / _mass_;
 
       // G4Track * current_track = 0; // XXX
@@ -140,21 +145,22 @@ namespace mctools {
       return;
     }
 
-    void em_field_equation_of_motion::EvaluateRhsGivenB(const G4double y_[],
-                                                        const G4double field_[6],
-                                                        G4double dydx_[]) const
+    void
+    em_field_equation_of_motion::EvaluateRhsGivenB(const G4double y_[],
+                                                   const G4double field_[6],
+                                                   G4double dydx_[]) const
     {
       DT_LOG_TRACE_ENTERING(_logprio());
 
       double p2 = y_[PX] * y_[PX] + y_[PY] * y_[PY] + y_[PZ] * y_[PZ];
-      double energy = std::sqrt( p2 + _mass_sqr_);
+      double energy = std::sqrt(p2 + _mass_sqr_);
       double coef2 = energy / CLHEP::c_light;
       if (is_only_magnetic()) {
         coef2 = 0.0;
       }
       double inverse_p = 1.0 / std::sqrt(p2);
       double inverse_velocity = energy * inverse_p / CLHEP::c_light;
-      double coef1 = _charge_coef_ * inverse_p ;
+      double coef1 = _charge_coef_ * inverse_p;
 
       dydx_[RX] = y_[PX] * inverse_p;
       dydx_[RY] = y_[PY] * inverse_p;
@@ -162,18 +168,18 @@ namespace mctools {
       dydx_[PX] = 0.0;
       dydx_[PY] = 0.0;
       dydx_[PZ] = 0.0;
-      dydx_[UNDEF_6]     = 0.0;
+      dydx_[UNDEF_6] = 0.0;
       dydx_[GLOBAL_TIME] = inverse_velocity;
-      dydx_[UNDEF_8]     = 0.0;
-      dydx_[SPINX]       = 0.0;
-      dydx_[SPINY]       = 0.0;
-      dydx_[SPINZ]       = 0.0;
+      dydx_[UNDEF_8] = 0.0;
+      dydx_[SPINX] = 0.0;
+      dydx_[SPINY] = 0.0;
+      dydx_[SPINZ] = 0.0;
 
       if (_charge_ != 0.0) {
         dydx_[PX] = coef1 * (y_[PY] * field_[EMFIELD_BZ] - y_[PZ] * field_[EMFIELD_BY]);
         dydx_[PY] = coef1 * (y_[PZ] * field_[EMFIELD_BX] - y_[PX] * field_[EMFIELD_BZ]);
         dydx_[PZ] = coef1 * (y_[PX] * field_[EMFIELD_BY] - y_[PY] * field_[EMFIELD_BX]);
-        if (! _only_magnetic_) {
+        if (!_only_magnetic_) {
           double c1c2 = coef1 * coef2;
           dydx_[PX] += c1c2 * field_[EMFIELD_EX];
           dydx_[PY] += c1c2 * field_[EMFIELD_EY];
@@ -184,7 +190,7 @@ namespace mctools {
       G4ThreeVector Bfield;
       Bfield.set(field_[EMFIELD_BX], field_[EMFIELD_BY], field_[EMFIELD_BZ]);
       G4ThreeVector Efield;
-      if (! is_only_magnetic()) {
+      if (!is_only_magnetic()) {
         Efield.set(field_[EMFIELD_EX], field_[EMFIELD_EY], field_[EMFIELD_EZ]);
         Efield /= CLHEP::c_light;
       }
@@ -207,11 +213,13 @@ namespace mctools {
         G4double uce = _anomaly_ + 1. / (_gamma_ + 1.);
         G4ThreeVector Spin(y_[SPINX], y_[SPINY], y_[SPINZ]);
         G4ThreeVector dSpin;
-        dSpin = _charge_ * _omegac_ * ( ucb * (Spin.cross(Bfield)) - udb * (Spin.cross(u))
-                                         // from Jackson
-                                         // -uce*Spin.cross(u.cross(EField)) );
-                                         // but this form has one less operation
-                                         - uce * (u * (Spin * Efield) - Efield * (Spin * u)) );
+        dSpin = _charge_ * _omegac_ *
+                (ucb * (Spin.cross(Bfield)) -
+                 udb * (Spin.cross(u))
+                 // from Jackson
+                 // -uce*Spin.cross(u.cross(EField)) );
+                 // but this form has one less operation
+                 - uce * (u * (Spin * Efield) - Efield * (Spin * u)));
         dydx_[SPINX] = dSpin.x();
         dydx_[SPINY] = dSpin.y();
         dydx_[SPINZ] = dSpin.z();

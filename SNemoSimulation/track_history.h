@@ -34,28 +34,23 @@
 #define MCTOOLS_G4_TRACK_HISTORY_H 1
 
 // Standard library:
-#include <string>
 #include <map>
+#include <string>
 
 namespace mctools {
 
   namespace g4 {
 
     /// \brief Recording of tracks history
-    class track_history
-    {
+    class track_history {
     public:
-
       /// \brief Recording of informations about a single track
-      class track_info
-      {
+      class track_info {
       public:
-
         /// Undefined Id for a track (parent track Id is 0 for a primary track)
         static const int TRACK_ID_UNSET = 0;
 
       public:
-
         int get_id() const;
 
         void set_id(const int id_);
@@ -66,19 +61,19 @@ namespace mctools {
 
         bool is_primary() const;
 
-        const std::string & get_particle_name() const;
+        const std::string& get_particle_name() const;
 
-        void set_particle_name(const std::string & name_);
+        void set_particle_name(const std::string& name_);
 
-        const std::string & get_creator_process_name() const;
+        const std::string& get_creator_process_name() const;
 
-        void set_creator_process_name(const std::string & name_);
-
-        /// \deprecated
-        const std::string & get_creator_sensitive_category() const;
+        void set_creator_process_name(const std::string& name_);
 
         /// \deprecated
-        void set_creator_sensitive_category(const std::string & category_);
+        const std::string& get_creator_sensitive_category() const;
+
+        /// \deprecated
+        void set_creator_sensitive_category(const std::string& category_);
 
         /// Constructor
         track_info();
@@ -90,31 +85,28 @@ namespace mctools {
         void reset();
 
       private:
-
-        int         _id_;                   //!< G4 particle id
-        int         _parent_id_;            //!< G4 parent id (if any)
-        std::string _particle_name_;        //!< G4 particle name
-        std::string _creator_process_name_; //!< G4 creation process name
+        int _id_;                                 //!< G4 particle id
+        int _parent_id_;                          //!< G4 parent id (if any)
+        std::string _particle_name_;              //!< G4 particle name
+        std::string _creator_process_name_;       //!< G4 creation process name
         std::string _creator_sensitive_category_; //!< SNG4 sensitive category (obsolete)
-
       };
 
     public:
-
       /// Dictionary type of track info
       typedef std::map<int, track_info> track_info_dict_type;
 
-      const track_info_dict_type & get_track_infos() const;
+      const track_info_dict_type& get_track_infos() const;
 
-      track_info_dict_type & grab_track_infos();
+      track_info_dict_type& grab_track_infos();
 
       bool has_track_info(const int id_) const;
 
-      const track_info & get_track_info(const int id_) const;
+      const track_info& get_track_info(const int id_) const;
 
-      track_info & grab_track_info(const int id_);
+      track_info& grab_track_info(const int id_);
 
-      void add_track_info(const int id_, const track_info & tinfo_);
+      void add_track_info(const int id_, const track_info& tinfo_);
 
       /// Constructor
       track_history();
@@ -126,14 +118,12 @@ namespace mctools {
       void reset();
 
     private:
-
       track_info_dict_type _track_infos_; //!< Dictionary of track informations
-
     };
 
   } // end of namespace g4
 
-}// end of namespace mctools
+} // end of namespace mctools
 
 #endif // MCTOOLS_G4_TRACK_HISTORY_H
 

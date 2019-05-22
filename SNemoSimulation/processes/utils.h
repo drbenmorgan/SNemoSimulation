@@ -31,11 +31,11 @@ namespace mctools {
 
       std::string process_type_to_label(G4ProcessType);
 
-      G4ProcessType label_to_process_type(const std::string & label_);
+      G4ProcessType label_to_process_type(const std::string& label_);
 
       std::string em_process_subtype_to_label(int);
 
-      int label_to_em_process_subtype(const std::string & label_);
+      int label_to_em_process_subtype(const std::string& label_);
 
     } // end of namespace processes
 

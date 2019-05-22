@@ -40,38 +40,33 @@ namespace mctools {
   namespace g4 {
 
     /// \brief Stacking action using the Geant4 interface
-    class stacking_action : public G4UserStackingAction,
-                            public loggable_support
-    {
+    class stacking_action : public G4UserStackingAction, public loggable_support {
     public:
-
       /// Constructor
-      stacking_action ();
+      stacking_action();
 
       /// Destructor
-      virtual ~stacking_action ();
+      virtual ~stacking_action();
 
       /// Initialize
-      void initialize (const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       // Geant4 interface :
-      virtual G4ClassificationOfNewTrack ClassifyNewTrack (const G4Track * track_);
+      virtual G4ClassificationOfNewTrack ClassifyNewTrack(const G4Track* track_);
 
       // Geant4 interface :
-      virtual void NewStage ();
+      virtual void NewStage();
 
       // Geant4 interface :
-      virtual void PrepareNewEvent ();
+      virtual void PrepareNewEvent();
 
     private:
-
-      G4Navigator *                  _g4_navigator_;
-      bool                           _kill_secondary_particles_;
-      std::vector<std::string>       _killer_volume_names_;
-      std::vector<G4LogicalVolume *> _killer_volumes_;
-      std::vector<std::string>       _killer_material_names_;
-      std::vector<G4Material *>      _killer_materials_;
-
+      G4Navigator* _g4_navigator_;
+      bool _kill_secondary_particles_;
+      std::vector<std::string> _killer_volume_names_;
+      std::vector<G4LogicalVolume*> _killer_volumes_;
+      std::vector<std::string> _killer_material_names_;
+      std::vector<G4Material*> _killer_materials_;
     };
 
   } // end of namespace g4

@@ -28,29 +28,25 @@ namespace mctools {
   namespace g4 {
 
     /// \brief A sensitive hit using the Geant4 interface with an embedded base step hit
-    class sensitive_hit : public G4VHit
-    {
+    class sensitive_hit : public G4VHit {
     public:
-
       /// Return const reference to embedded base step hit
-      const mctools::base_step_hit & get_hit_data () const;
+      const mctools::base_step_hit& get_hit_data() const;
 
       /// Return mutable reference to embedded base step hit
-      mctools::base_step_hit & grab_hit_data ();
+      mctools::base_step_hit& grab_hit_data();
 
       /// Default constructor
-      sensitive_hit ();
+      sensitive_hit();
 
       /// Destructor
-      virtual ~sensitive_hit ();
+      virtual ~sensitive_hit();
 
       /// Reset to default values
-      void reset ();
+      void reset();
 
     private:
-
       mctools::base_step_hit _hit_data_; //!< Basic MC step hit data
-
     };
 
   } // end of namespace g4

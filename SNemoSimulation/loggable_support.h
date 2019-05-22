@@ -23,7 +23,6 @@ namespace mctools {
     class loggable_support {
 
     public:
-
       /// Default constructor
       loggable_support();
 
@@ -35,28 +34,25 @@ namespace mctools {
       /// Destructor
       virtual ~loggable_support();
 
-      void set_logging_priority(const std::string & priority_label_);
+      void set_logging_priority(const std::string& priority_label_);
 
       void set_logging_priority(datatools::logger::priority);
 
-      bool is_debug () const;
+      bool is_debug() const;
 
-      void set_debug (bool);
+      void set_debug(bool);
 
-      bool is_verbose () const;
+      bool is_verbose() const;
 
-      void set_verbose (bool);
+      void set_verbose(bool);
 
     protected:
-
-      void _initialize_logging_support(const datatools::properties &);
+      void _initialize_logging_support(const datatools::properties&);
 
       datatools::logger::priority _logprio() const;
 
     protected:
-
       datatools::logger::priority _logging_priority; //!< Logging priority threshold
-
     };
 
   } // end of namespace g4

@@ -30,10 +30,8 @@ namespace mctools {
   namespace g4 {
 
     /// \brief Geant4 physics constructor for electromagnetic processes
-    class em_physics_constructor : public base_physics_constructor
-    {
+    class em_physics_constructor : public base_physics_constructor {
     public:
-
       // http://geant4.in2p3.fr/IMG/pdf_Lecture-LowEnergyEMPhysics.pdf
       static const std::string EM_MODEL_STANDARD;
       static const std::string EM_MODEL_LOW_ENERGY_LIVERMORE;
@@ -51,7 +49,7 @@ namespace mctools {
         /// Default constructor
         region_deexcitation_type();
         /// Constructor
-        region_deexcitation_type(bool,bool,bool);
+        region_deexcitation_type(bool, bool, bool);
         /// Check if deexcitation is activated
         bool is_activated() const;
         /// Check if fluorescence is activated
@@ -76,7 +74,7 @@ namespace mctools {
       bool is_em_low_energy_penelope() const;
 
       /// Return the name of the EM processes
-      const std::string & get_em_model() const;
+      const std::string& get_em_model() const;
 
       /// Default constructor
       em_physics_constructor();
@@ -85,17 +83,17 @@ namespace mctools {
       virtual ~em_physics_constructor();
 
       /// Initialization
-      virtual void initialize(const datatools::properties & config_,
-                              physics_constructor_dict_type & dict_);
+      virtual void initialize(const datatools::properties& config_,
+                              physics_constructor_dict_type& dict_);
 
       /// Reset
       virtual void reset();
 
       /// Smart print
-      virtual void tree_dump(std::ostream      & out_    = std::clog,
-                             const std::string & title_  = "",
-                             const std::string & indent_ = "",
-                             bool inherit_               = false) const;
+      virtual void tree_dump(std::ostream& out_ = std::clog,
+                             const std::string& title_ = "",
+                             const std::string& indent_ = "",
+                             bool inherit_ = false) const;
 
       /// Particles construction Geant4 interface :
       virtual void ConstructParticle();
@@ -104,7 +102,6 @@ namespace mctools {
       virtual void ConstructProcess();
 
     protected:
-
       // These methods construct processes:
 
       /// Main construction of EM processes
@@ -117,75 +114,99 @@ namespace mctools {
       void _ConstructExtraModels();
 
       /// Setup the electromagnetic extra models configuration
-      void _setup_em_extra_models_configurator(const datatools::properties & config_);
+      void _setup_em_extra_models_configurator(const datatools::properties& config_);
 
       /// Set attributes default values
       void _set_defaults();
 
     private:
-
       // EM processes:
       std::string _em_model_; ///< Electromagnetic model ("standard"/"livermore"/"penelope")
 
       // For gammas:
-      bool        _em_gamma_rayleigh_scattering_;  ///< Activation flag for gamma Rayleigh scattering (default=false)
-      bool        _em_gamma_photo_electric_;       ///< Activation flag for gamma photo electric effect (default=true)
-      bool        _em_gamma_compton_scattering_;   ///< Activation flag for gamma Compton scattering (default=true)
-      bool        _em_gamma_conversion_;           ///< Activation flag for gamma e+/e- pair conversion (default=true)
-      bool        _em_gamma_conversion_to_muons_;  ///< Activation flag for gamma muon pair conversion (default=false)
-      bool        _em_gamma_step_limiter_;         ///< Activation flag for gamma step limiter (default=false)
-      bool        _em_gamma_user_special_cuts_;    ///< Activation flag for gamma user special cuts (default=false)
+      bool _em_gamma_rayleigh_scattering_; ///< Activation flag for gamma Rayleigh scattering
+                                           ///< (default=false)
+      bool _em_gamma_photo_electric_;      ///< Activation flag for gamma photo electric effect
+                                           ///< (default=true)
+      bool _em_gamma_compton_scattering_;  ///< Activation flag for gamma Compton scattering
+                                           ///< (default=true)
+      bool
+        _em_gamma_conversion_; ///< Activation flag for gamma e+/e- pair conversion (default=true)
+      bool _em_gamma_conversion_to_muons_; ///< Activation flag for gamma muon pair conversion
+                                           ///< (default=false)
+      bool _em_gamma_step_limiter_;      ///< Activation flag for gamma step limiter (default=false)
+      bool _em_gamma_user_special_cuts_; ///< Activation flag for gamma user special cuts
+                                         ///< (default=false)
 
       // For electron/positron:
-      bool        _em_electron_ionization_;          ///< Activation flag for electron/positron ionization (default=true)
-      bool        _em_electron_bremsstrahlung_;      ///< Activation flag for electron/positron bremsstrahlung (default=true)
-      bool        _em_electron_multiple_scattering_; ///< Activation flag for electron/positron multiple scattering (default=true)
-      bool        _em_electron_ms_use_distance_to_boundary_; ///< Activation flag for electron/positron multiple scattering special algorithm near volume boundary (default=true)
-      double      _em_electron_ms_range_factor_;     ///< Special factor for electron/positron multiple scattering (default=0.005)
-      bool        _em_positron_annihilation_;        ///< Activation flag for positron annihilation (default=true)
-      bool        _em_electron_step_limiter_;        ///< Activation flag for electron/positron step limiter (default=true)
-      bool        _em_electron_user_special_cuts_;   ///< Activation flag for electron/positron user special cuts (default=false)
+      bool _em_electron_ionization_;     ///< Activation flag for electron/positron ionization
+                                         ///< (default=true)
+      bool _em_electron_bremsstrahlung_; ///< Activation flag for electron/positron bremsstrahlung
+                                         ///< (default=true)
+      bool _em_electron_multiple_scattering_; ///< Activation flag for electron/positron multiple
+                                              ///< scattering (default=true)
+      bool _em_electron_ms_use_distance_to_boundary_; ///< Activation flag for electron/positron
+                                                      ///< multiple scattering special algorithm
+                                                      ///< near volume boundary (default=true)
+      double _em_electron_ms_range_factor_; ///< Special factor for electron/positron multiple
+                                            ///< scattering (default=0.005)
+      bool _em_positron_annihilation_; ///< Activation flag for positron annihilation (default=true)
+      bool _em_electron_step_limiter_; ///< Activation flag for electron/positron step limiter
+                                       ///< (default=true)
+      bool _em_electron_user_special_cuts_; ///< Activation flag for electron/positron user special
+                                            ///< cuts (default=false)
 
       // Atomic deexcitation:
-      bool        _em_fluorescence_; ///< Activation flag for Fluorescence (default=false)
-      bool        _em_auger_;        ///< Activation flag for Auger process  (default=false)
-      bool        _em_pixe_;         ///< Activation flag for PIXE model (default=false)
-      std::string _em_pixe_cross_section_model_;          ///< PIXE cross section mode (default="Empirical")
-      std::string _em_pixe_electron_cross_section_model_; ///< PIXE electron cross section model (default="Livermore")
-      std::map<std::string, region_deexcitation_type> _em_regions_deexcitation_; ///< Dictionary of atomic deexcitation configuration for regions (default=empty)
+      bool _em_fluorescence_; ///< Activation flag for Fluorescence (default=false)
+      bool _em_auger_;        ///< Activation flag for Auger process  (default=false)
+      bool _em_pixe_;         ///< Activation flag for PIXE model (default=false)
+      std::string _em_pixe_cross_section_model_; ///< PIXE cross section mode (default="Empirical")
+      std::string _em_pixe_electron_cross_section_model_; ///< PIXE electron cross section model
+                                                          ///< (default="Livermore")
+      std::map<std::string, region_deexcitation_type>
+        _em_regions_deexcitation_; ///< Dictionary of atomic deexcitation configuration for regions
+                                   ///< (default=empty)
 
       // For ions:
-      bool        _em_ion_multiple_scattering_;   ///< Activation flag for ion multiple scattering (default=true)
-      bool        _em_ion_ionization_;            ///< Activation flag for ion ionization (default=true)
-      bool        _em_ion_step_limiter_;          ///< Activation flag for ion step limiter (default=true)
-      bool        _em_ion_user_special_cuts_;     ///< Activation flag for ion user special cuts (default=false)
+      bool _em_ion_multiple_scattering_; ///< Activation flag for ion multiple scattering
+                                         ///< (default=true)
+      bool _em_ion_ionization_;          ///< Activation flag for ion ionization (default=true)
+      bool _em_ion_step_limiter_;        ///< Activation flag for ion step limiter (default=true)
+      bool
+        _em_ion_user_special_cuts_; ///< Activation flag for ion user special cuts (default=false)
 
       // For muons:
-      bool        _em_muon_multiple_scattering_;  ///< Activation flag for muon multiple scattering (default=true)
-      bool        _em_muon_ionization_;           ///< Activation flag for muon ionization (default=true)
-      bool        _em_muon_bremsstrahlung_;       ///< Activation flag for muon bremsstrahlung (default=true)
-      bool        _em_muon_pair_production_;      ///< Activation flag for muon pair production (default=true)
-      bool        _em_muon_step_limiter_;         ///< Activation flag for muon step limiter (default=false)
-      bool        _em_muon_user_special_cuts_;    ///< Activation flag for muon user special cuts (default=false)
+      bool _em_muon_multiple_scattering_; ///< Activation flag for muon multiple scattering
+                                          ///< (default=true)
+      bool _em_muon_ionization_;          ///< Activation flag for muon ionization (default=true)
+      bool _em_muon_bremsstrahlung_;  ///< Activation flag for muon bremsstrahlung (default=true)
+      bool _em_muon_pair_production_; ///< Activation flag for muon pair production (default=true)
+      bool _em_muon_step_limiter_;    ///< Activation flag for muon step limiter (default=false)
+      bool
+        _em_muon_user_special_cuts_; ///< Activation flag for muon user special cuts (default=false)
 
       // Others:
-      bool        _em_other_multiple_scattering_; ///< Activation flag for other particle multiple scattering (default=true)
-      bool        _em_other_ionization_;          ///< Activation flag for other particle ionization (default=true)
-      bool        _em_other_step_limiter_;        ///< Activation flag for other particle step limiter (default=false)
-      bool        _em_other_user_special_cuts_;   ///< Activation flag for other particle user special cuts (default=false)
+      bool _em_other_multiple_scattering_; ///< Activation flag for other particle multiple
+                                           ///< scattering (default=true)
+      bool _em_other_ionization_; ///< Activation flag for other particle ionization (default=true)
+      bool _em_other_step_limiter_;      ///< Activation flag for other particle step limiter
+                                         ///< (default=false)
+      bool _em_other_user_special_cuts_; ///< Activation flag for other particle user special cuts
+                                         ///< (default=false)
 
-      bool        _em_using_extra_models_;        ///< Activation flag for EM extra models associated to specific particles/processes/regions combination
+      bool _em_using_extra_models_; ///< Activation flag for EM extra models associated to specific
+                                    ///< particles/processes/regions combination
 
       /// \brief PIMPL-ized private working data structure
       struct _work_type_;
 
       /// Return the mutable reference to the internal private data, create it if not existing
-      _work_type_ & _grab_work_();
+      _work_type_& _grab_work_();
 
       boost::scoped_ptr<_work_type_> _work_; ///< Private working data
 
-      DATATOOLS_FACTORY_SYSTEM_AUTO_REGISTRATION_INTERFACE(base_physics_constructor, em_physics_constructor)
-
+      DATATOOLS_FACTORY_SYSTEM_AUTO_REGISTRATION_INTERFACE(base_physics_constructor,
+                                                           em_physics_constructor)
     };
 
   } // end of namespace g4

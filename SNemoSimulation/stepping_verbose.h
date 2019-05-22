@@ -20,22 +20,19 @@ namespace mctools {
   namespace g4 {
 
     /// \brief Stepping verbose support using the Geant4 interface
-    class stepping_verbose: public G4SteppingVerbose
-    {
+    class stepping_verbose : public G4SteppingVerbose {
     public:
-
       /// Constructor
-      stepping_verbose ();
+      stepping_verbose();
 
       /// Destructor
-      virtual ~stepping_verbose ();
+      virtual ~stepping_verbose();
 
       /// Geant4 interface
-      void StepInfo ();
+      void StepInfo();
 
       /// Geant4 interface
-      void TrackingStarted ();
-
+      void TrackingStarted();
     };
 
   } // end of namespace g4

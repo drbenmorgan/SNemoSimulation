@@ -4,20 +4,20 @@
 #include <SNemoSimulation/electromagnetic_field.h>
 
 // Standard library:
-#include <string>
 #include <sstream>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 // Third party:
 // - Bayeux/datatools:
-#include <datatools/units.h>
 #include <datatools/clhep_units.h>
-#include <datatools/properties.h>
 #include <datatools/exception.h>
+#include <datatools/properties.h>
+#include <datatools/units.h>
 // - Bayeux/geomtools:
-#include <geomtools/utils.h>
 #include <geomtools/manager.h>
+#include <geomtools/utils.h>
 // - Bayeux/emfield:
 #include <emfield/base_electromagnetic_field.h>
 #include <emfield/electromagnetic_field_manager.h>
@@ -30,62 +30,72 @@ namespace mctools {
 
   namespace g4 {
 
-    bool electromagnetic_field::has_name() const
+    bool
+    electromagnetic_field::has_name() const
     {
-      return ! _name_.empty();
+      return !_name_.empty();
     }
 
-    void electromagnetic_field::set_name(const std::string & name_)
+    void
+    electromagnetic_field::set_name(const std::string& name_)
     {
       _name_ = name_;
       return;
     }
 
-    const std::string & electromagnetic_field::get_name() const
+    const std::string&
+    electromagnetic_field::get_name() const
     {
       return _name_;
     }
 
-    void electromagnetic_field::set_field_check_pos_time(bool c_)
+    void
+    electromagnetic_field::set_field_check_pos_time(bool c_)
     {
       _field_check_pos_time_ = c_;
       return;
     }
 
-    bool electromagnetic_field::is_field_check_pos_time() const
+    bool
+    electromagnetic_field::is_field_check_pos_time() const
     {
       return _field_check_pos_time_;
     }
 
-    bool electromagnetic_field::is_initialized() const
+    bool
+    electromagnetic_field::is_initialized() const
     {
       return _initialized_;
     }
 
-    bool electromagnetic_field::has_field() const
+    bool
+    electromagnetic_field::has_field() const
     {
       return _field_ != 0;
     }
 
-    void electromagnetic_field::set_field(const emfield::base_electromagnetic_field & f_)
+    void
+    electromagnetic_field::set_field(const emfield::base_electromagnetic_field& f_)
     {
       _field_ = &f_;
       return;
     }
 
-    const emfield::base_electromagnetic_field &
+    const emfield::base_electromagnetic_field&
     electromagnetic_field::get_field() const
     {
-      DT_THROW_IF (! has_field(), std::logic_error, "No electromagnetic field !");
+      DT_THROW_IF(!has_field(), std::logic_error, "No electromagnetic field !");
       return *_field_;
     }
 
-    bool electromagnetic_field::is_active() const
+    bool
+    electromagnetic_field::is_active() const
     {
       return has_field();
     }
 
-    void electromagnetic_field::_set_defaults()
+    void
+    electromagnetic_field::_set_defaults()
     {
       _field_check_pos_time_ = true;
       geomtools::invalidate(_standalone_constant_mag_field_);
@@ -93,10 +103,12 @@ namespace mctools {
       return;
     }
 
-    void electromagnetic_field::reset()
+    void
+    electromagnetic_field::reset()
     {
-      DT_THROW_IF (!_initialized_,std::logic_error,
-                   "Geant4 electromagnetic field '" << get_name() << "' is not initialized !");
+      DT_THROW_IF(!_initialized_,
+                  std::logic_error,
+                  "Geant4 electromagnetic field '" << get_name() << "' is not initialized !");
 
       _initialized_ = false;
       _name_.clear();
@@ -122,17 +134,20 @@ namespace mctools {
       return;
     }
 
-    void electromagnetic_field::initialize()
+    void
+    electromagnetic_field::initialize()
     {
       datatools::properties empty;
       initialize(empty);
       return;
     }
 
-    void electromagnetic_field::initialize(const datatools::properties & config_)
+    void
+    electromagnetic_field::initialize(const datatools::properties& config_)
     {
-      DT_THROW_IF (_initialized_,std::logic_error,
-                   "Geant4 electromagnetic field '" << get_name() << "' is already initialized !");
+      DT_THROW_IF(_initialized_,
+                  std::logic_error,
+                  "Geant4 electromagnetic field '" << get_name() << "' is already initialized !");
 
       loggable_support::_initialize_logging_support(config_);
 
@@ -143,7 +158,7 @@ namespace mctools {
         }
       }
 
-      if (! has_field()) {
+      if (!has_field()) {
         double magnetic_field_unit = CLHEP::tesla;
         double electric_field_unit = CLHEP::volt / CLHEP::meter;
 
@@ -156,10 +171,14 @@ namespace mctools {
               mode = STANDALONE_ELECTRIC_FIELD;
             } else {
               DT_THROW(std::logic_error,
-                       "Invalid value '" << mode_str << "' for 'mode' property in Geant4 electromagnetic field '" << get_name() << "' !");
+                       "Invalid value '"
+                         << mode_str << "' for 'mode' property in Geant4 electromagnetic field '"
+                         << get_name() << "' !");
             }
           } else {
-            DT_THROW(std::logic_error, "Missing 'mode' property in Geant4 electromagnetic field '" << get_name() << "' !");
+            DT_THROW(std::logic_error,
+                     "Missing 'mode' property in Geant4 electromagnetic field '" << get_name()
+                                                                                 << "' !");
           }
 
           if (mode == STANDALONE_ELECTRIC_FIELD) {
@@ -168,16 +187,22 @@ namespace mctools {
               electric_field_unit = datatools::units::get_electric_field_unit_from(efu);
             }
 
-            if (! geomtools::is_valid(_standalone_constant_electric_field_)) {
+            if (!geomtools::is_valid(_standalone_constant_electric_field_)) {
               if (config_.has_key("standalone_constant_electric_field")) {
                 std::vector<double> seg;
                 config_.fetch("standalone_constant_electric_field", seg);
-                DT_THROW_IF (seg.size() != 3, std::logic_error,
-                             "Invalid dimension for vector of constant electric field coordinates in Geant4 electric field '" << get_name() << "' !");
+                DT_THROW_IF(seg.size() != 3,
+                            std::logic_error,
+                            "Invalid dimension for vector of constant electric field coordinates "
+                            "in Geant4 electric field '"
+                              << get_name() << "' !");
                 _standalone_constant_electric_field_.set(seg[0], seg[1], seg[2]);
-                if (! config_.has_explicit_unit("standalone_constant_electric_field")) {
+                if (!config_.has_explicit_unit("standalone_constant_electric_field")) {
                   _standalone_constant_electric_field_ *= electric_field_unit;
-                  DT_LOG_NOTICE(_logprio(), "Forcing unit for standalone constant electric field in Geant4 electric field '" << get_name() << "'...");
+                  DT_LOG_NOTICE(
+                    _logprio(),
+                    "Forcing unit for standalone constant electric field in Geant4 electric field '"
+                      << get_name() << "'...");
                 }
               }
             }
@@ -189,16 +214,22 @@ namespace mctools {
               magnetic_field_unit = datatools::units::get_magnetic_field_unit_from(mfu);
             }
 
-            if (! geomtools::is_valid(_standalone_constant_mag_field_)) {
+            if (!geomtools::is_valid(_standalone_constant_mag_field_)) {
               if (config_.has_key("standalone_constant_mag_field")) {
                 std::vector<double> smg;
                 config_.fetch("standalone_constant_mag_field", smg);
-                DT_THROW_IF (smg.size() != 3, std::logic_error,
-                             "Invalid dimension for vector of constant magnetic field coordinates in Geant4 magnetic field '" << get_name() << "' !");
+                DT_THROW_IF(smg.size() != 3,
+                            std::logic_error,
+                            "Invalid dimension for vector of constant magnetic field coordinates "
+                            "in Geant4 magnetic field '"
+                              << get_name() << "' !");
                 _standalone_constant_mag_field_.set(smg[0], smg[1], smg[2]);
-                if (! config_.has_explicit_unit("standalone_constant_mag_field")) {
+                if (!config_.has_explicit_unit("standalone_constant_mag_field")) {
                   _standalone_constant_mag_field_ *= magnetic_field_unit;
-                  DT_LOG_NOTICE(_logprio(), "Forcing unit for standalone constant magnetic field in Geant4 magnetic field '" << get_name() << "'...");
+                  DT_LOG_NOTICE(
+                    _logprio(),
+                    "Forcing unit for standalone constant magnetic field in Geant4 magnetic field '"
+                      << get_name() << "'...");
                 }
               }
             }
@@ -221,8 +252,8 @@ namespace mctools {
             else {
             std::ostringstream message;
             message << "mctools::g4::electromagnetic_field::initialize: "
-            << "Missing field plugin name property '" << "electromagnetic_field.geom_plugin" << "' !";
-            throw std::logic_error(message.str());
+            << "Missing field plugin name property '" << "electromagnetic_field.geom_plugin" << "'
+            !"; throw std::logic_error(message.str());
             }
 
             if (_geom_manager_->has_plugin(mag_field_plugin_name)
@@ -269,7 +300,6 @@ namespace mctools {
             }
             }
           */
-
         }
       }
 
@@ -282,7 +312,8 @@ namespace mctools {
     }
 
     // G4 interface:
-    G4bool electromagnetic_field::DoesFieldChangeEnergy() const
+    G4bool
+    electromagnetic_field::DoesFieldChangeEnergy() const
     {
       G4bool val = true;
       if (_field_ != 0) {
@@ -301,12 +332,15 @@ namespace mctools {
     }
 
     // G4 interface:
-    void electromagnetic_field::GetFieldValue(const double position_[4],
-                                              double * em_field_) const
+    void
+    electromagnetic_field::GetFieldValue(const double position_[4], double* em_field_) const
     {
-      DT_LOG_TRACE(_logprio(), "Entering GetFieldValue for Geant4 electromagnetic field '" << get_name() << "'...");
-      DT_THROW_IF (! _initialized_, std::logic_error,
-                   "Geant4 electromagnetic field '" << get_name() << "' is not initialized !");
+      DT_LOG_TRACE(_logprio(),
+                   "Entering GetFieldValue for Geant4 electromagnetic field '" << get_name()
+                                                                               << "'...");
+      DT_THROW_IF(!_initialized_,
+                  std::logic_error,
+                  "Geant4 electromagnetic field '" << get_name() << "' is not initialized !");
       em_field_[EMFIELD_BX] = 0.0;
       em_field_[EMFIELD_BY] = 0.0;
       em_field_[EMFIELD_BZ] = 0.0;
@@ -316,26 +350,29 @@ namespace mctools {
       if (_field_ != 0) {
         geomtools::vector_3d pos(position_[POSTIME_X], position_[POSTIME_Y], position_[POSTIME_Z]);
         double time = position_[POSTIME_T];
-        DT_LOG_TRACE(_logprio(), "Compute electromagnetic field at position/time "
-                     << pos / CLHEP::mm << " [mm] / " << time / CLHEP::ns << " [ns]"
-                     << " for Geant4 electromagnetic field '" << get_name() << "'...");
+        DT_LOG_TRACE(_logprio(),
+                     "Compute electromagnetic field at position/time "
+                       << pos / CLHEP::mm << " [mm] / " << time / CLHEP::ns << " [ns]"
+                       << " for Geant4 electromagnetic field '" << get_name() << "'...");
         if (_field_check_pos_time_) {
-          DT_THROW_IF(! _field_->position_and_time_are_valid(pos, time),
+          DT_THROW_IF(!_field_->position_and_time_are_valid(pos, time),
                       std::logic_error,
                       "Position and time at "
-                      << pos / CLHEP::mm << " [mm] / " << time / CLHEP::nanosecond << " [ns] "
-                      << " are not valid for electromagnetic field named '" << _name_
-                      << "' !");
+                        << pos / CLHEP::mm << " [mm] / " << time / CLHEP::nanosecond << " [ns] "
+                        << " are not valid for electromagnetic field named '" << _name_ << "' !");
         }
         if (_field_->is_magnetic_field()) {
           DT_LOG_TRACE(_logprio(), "Compute magnetic field contribution...");
           geomtools::vector_3d the_magnetic_field;
           int status = _field_->compute_magnetic_field(pos, time, the_magnetic_field);
-          DT_THROW_IF (status != 0,  std::logic_error,
-                       "Magnetic field named '" << _name_
-                       << "' cannot compute magnetic field value at "
-                       << pos / CLHEP::mm << " [mm] / " << time / CLHEP::nanosecond << " [ns] !");
-          DT_LOG_TRACE(_logprio(), "Geant4 magnetic field '" << get_name() << "' is : " << the_magnetic_field / CLHEP::gauss << " gauss");
+          DT_THROW_IF(status != 0,
+                      std::logic_error,
+                      "Magnetic field named '"
+                        << _name_ << "' cannot compute magnetic field value at " << pos / CLHEP::mm
+                        << " [mm] / " << time / CLHEP::nanosecond << " [ns] !");
+          DT_LOG_TRACE(_logprio(),
+                       "Geant4 magnetic field '" << get_name() << "' is : "
+                                                 << the_magnetic_field / CLHEP::gauss << " gauss");
           em_field_[EMFIELD_BX] = the_magnetic_field.x();
           em_field_[EMFIELD_BY] = the_magnetic_field.y();
           em_field_[EMFIELD_BZ] = the_magnetic_field.z();
@@ -344,11 +381,15 @@ namespace mctools {
           DT_LOG_TRACE(_logprio(), "Compute electric field contribution...");
           geomtools::vector_3d the_electric_field;
           int status = _field_->compute_electric_field(pos, time, the_electric_field);
-          DT_THROW_IF (status != 0,  std::logic_error,
-                       "Electric field named '" << _name_
-                       << "' cannot compute electric field value at "
-                       << pos / CLHEP::mm << " [mm] / " << time / CLHEP::nanosecond << " [ns] !");
-          DT_LOG_TRACE(_logprio(), "Geant4 electric field '" << get_name() << "' is : " << the_electric_field / (CLHEP::volt/CLHEP::meter) << " V/m");
+          DT_THROW_IF(status != 0,
+                      std::logic_error,
+                      "Electric field named '"
+                        << _name_ << "' cannot compute electric field value at " << pos / CLHEP::mm
+                        << " [mm] / " << time / CLHEP::nanosecond << " [ns] !");
+          DT_LOG_TRACE(_logprio(),
+                       "Geant4 electric field '"
+                         << get_name() << "' is : "
+                         << the_electric_field / (CLHEP::volt / CLHEP::meter) << " V/m");
           em_field_[EMFIELD_EX] = the_electric_field.x();
           em_field_[EMFIELD_EY] = the_electric_field.y();
           em_field_[EMFIELD_EZ] = the_electric_field.z();
@@ -362,22 +403,24 @@ namespace mctools {
         em_field_[EMFIELD_EY] = _standalone_constant_electric_field_.y();
         em_field_[EMFIELD_EZ] = _standalone_constant_electric_field_.z();
       }
-      DT_LOG_TRACE(_logprio(), "Exiting GetFieldValue for Geant4 electromagnetic field '" << get_name() << "'.");
+      DT_LOG_TRACE(_logprio(),
+                   "Exiting GetFieldValue for Geant4 electromagnetic field '" << get_name()
+                                                                              << "'.");
       return;
     }
 
-    void electromagnetic_field::dump(std::ostream & out_) const
+    void
+    electromagnetic_field::dump(std::ostream& out_) const
     {
       out_ << "electromagnetic_field:" << std::endl;
       out_ << "|-- Name                   : '" << _name_ << "'" << std::endl;
       if (geomtools::is_valid(_standalone_constant_mag_field_)) {
         out_ << "|-- Standalone constant magnetic field : "
-             << _standalone_constant_mag_field_ / CLHEP::gauss
-             << " gauss" << std::endl;
+             << _standalone_constant_mag_field_ / CLHEP::gauss << " gauss" << std::endl;
       } else if (geomtools::is_valid(_standalone_constant_electric_field_)) {
         out_ << "|-- Standalone constant electric field : "
-             << _standalone_constant_electric_field_ / (CLHEP::volt/CLHEP::meter)
-             << " V/m" << std::endl;
+             << _standalone_constant_electric_field_ / (CLHEP::volt / CLHEP::meter) << " V/m"
+             << std::endl;
       } else {
         out_ << "|-- Electromagnetic field         : " << _field_ << std::endl;
       }

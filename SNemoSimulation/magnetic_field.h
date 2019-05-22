@@ -50,89 +50,82 @@ namespace mctools {
     class detector_construction;
 
     /// \brief Magnetic field using the Geant4 interface
-    class magnetic_field : public G4MagneticField,
-                           public loggable_support
-    {
+    class magnetic_field : public G4MagneticField, public loggable_support {
     public:
-
       // typedef std::map<uint32_t, double> field_map_type;
 
       /// Check initialization status
-      bool is_initialized () const;
+      bool is_initialized() const;
 
-     /// Check active status
-      bool is_active () const;
+      /// Check active status
+      bool is_active() const;
 
       /// Check if the name is defined
       bool has_name() const;
 
-     /// Set the name
-      void set_name(const std::string & name_);
+      /// Set the name
+      void set_name(const std::string& name_);
 
       /// Return the name
-      const std::string & get_name() const;
+      const std::string& get_name() const;
 
-     /// Set the flag for checking position and time
+      /// Set the flag for checking position and time
       void set_field_check_pos_time(bool);
 
-     /// Check the flag for checking position and time
+      /// Check the flag for checking position and time
       bool is_field_check_pos_time() const;
 
-     /// Check if the field is defined
+      /// Check if the field is defined
       bool has_mag_field() const;
 
       /// Check if the field is defined
       bool has_field() const;
 
       /// Set the magnetic field
-      void set_mag_field (const emfield::base_electromagnetic_field &);
+      void set_mag_field(const emfield::base_electromagnetic_field&);
 
       /// Set the field
-       void set_field (const emfield::base_electromagnetic_field &);
+      void set_field(const emfield::base_electromagnetic_field&);
 
-    /// Return the field
-      const emfield::base_electromagnetic_field & get_mag_field() const;
+      /// Return the field
+      const emfield::base_electromagnetic_field& get_mag_field() const;
 
-     /// Return the field
-      const emfield::base_electromagnetic_field & get_field() const;
+      /// Return the field
+      const emfield::base_electromagnetic_field& get_field() const;
 
       /// Default constructor
-      magnetic_field ();
+      magnetic_field();
 
       /// Destructor
-      virtual ~magnetic_field ();
+      virtual ~magnetic_field();
 
       /// Initialization
-      void initialize (const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       /// Initialization
-      void initialize ();
+      void initialize();
 
       /// Reset
       void reset();
 
-     /// Print
-      void dump (std::ostream & out_ = std::clog) const;
+      /// Print
+      void dump(std::ostream& out_ = std::clog) const;
 
       // G4 interface:
-      void GetFieldValue (const double position_[3],
-                          double * b_field_) const;
+      void GetFieldValue(const double position_[3], double* b_field_) const;
 
     protected:
-
       /// Set default attributes values
       void _set_defaults();
 
     private:
-
-      bool                                           _initialized_;
-      std::string                                    _name_;
-      const emfield::base_electromagnetic_field    * _field_;
-      bool                                           _field_check_pos_time_;
-      geomtools::vector_3d                           _standalone_constant_field_;
+      bool _initialized_;
+      std::string _name_;
+      const emfield::base_electromagnetic_field* _field_;
+      bool _field_check_pos_time_;
+      geomtools::vector_3d _standalone_constant_field_;
 
       friend class detector_construction;
-
     };
 
   } // end of namespace g4

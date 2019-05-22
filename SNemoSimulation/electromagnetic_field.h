@@ -52,16 +52,13 @@ namespace mctools {
     class detector_construction;
 
     /// \brief Electromagnetic field using the Geant4 interface
-    class electromagnetic_field : \
-      //public G4MagneticField,
-      public G4ElectroMagneticField,
-      public loggable_support
-    {
+    class electromagnetic_field : // public G4MagneticField,
+                                  public G4ElectroMagneticField,
+                                  public loggable_support {
     public:
-
       /// \brief Field mode
       enum standalone_field_mode {
-        STANDALONE_UNDEFINED      = 0,
+        STANDALONE_UNDEFINED = 0,
         STANDALONE_MAGNETIC_FIELD = 1,
         STANDALONE_ELECTRIC_FIELD = 2
       };
@@ -78,10 +75,10 @@ namespace mctools {
       bool has_name() const;
 
       /// Set the name
-      void set_name(const std::string & name_);
+      void set_name(const std::string& name_);
 
       /// Return the name
-      const std::string & get_name() const;
+      const std::string& get_name() const;
 
       /// Set the flag for checking position and time
       void set_field_check_pos_time(bool);
@@ -93,10 +90,10 @@ namespace mctools {
       bool has_field() const;
 
       /// Set the field
-      void set_field(const emfield::base_electromagnetic_field &);
+      void set_field(const emfield::base_electromagnetic_field&);
 
       /// Return the field
-      const emfield::base_electromagnetic_field & get_field() const;
+      const emfield::base_electromagnetic_field& get_field() const;
 
       /// Default constructor
       electromagnetic_field();
@@ -105,7 +102,7 @@ namespace mctools {
       virtual ~electromagnetic_field();
 
       /// Initialization
-      void initialize(const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       /// Initialization
       void initialize();
@@ -114,32 +111,30 @@ namespace mctools {
       void reset();
 
       /// Print
-      void dump(std::ostream & out_ = std::clog) const;
+      void dump(std::ostream& out_ = std::clog) const;
 
       // G4 interface:
 
       /// Return the field value at given position/time
-      void GetFieldValue(const double position_[4], double * em_field_) const;
+      void GetFieldValue(const double position_[4], double* em_field_) const;
 
       /// Check if the field changes the energy
       virtual G4bool DoesFieldChangeEnergy() const;
 
     protected:
-
       /// Set default attributes values
       void _set_defaults();
 
     private:
-
-      bool                                        _initialized_; //!< Initialization flag
-      std::string                                 _name_; //!< Name
-      const emfield::base_electromagnetic_field * _field_; //!< Handle to the electromagnetic field
-      bool                                        _field_check_pos_time_; //!< Flag for checking position/time
-      geomtools::vector_3d                        _standalone_constant_mag_field_; //!< Standalone uniform magnetic field
-      geomtools::vector_3d                        _standalone_constant_electric_field_; //!< Standalone uniform electric field
+      bool _initialized_;                                   //!< Initialization flag
+      std::string _name_;                                   //!< Name
+      const emfield::base_electromagnetic_field* _field_;   //!< Handle to the electromagnetic field
+      bool _field_check_pos_time_;                          //!< Flag for checking position/time
+      geomtools::vector_3d _standalone_constant_mag_field_; //!< Standalone uniform magnetic field
+      geomtools::vector_3d
+        _standalone_constant_electric_field_; //!< Standalone uniform electric field
 
       friend class detector_construction;
-
     };
 
   } // end of namespace g4

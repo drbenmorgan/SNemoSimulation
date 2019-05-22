@@ -39,10 +39,8 @@ namespace mctools {
     class detector_construction;
 
     /// \brief Manager for Geant4 biasing algorithm associated to elements of the geometry
-    class biasing_manager
-    {
+    class biasing_manager {
     public:
-
       /// Default constructor
       biasing_manager();
 
@@ -50,26 +48,23 @@ namespace mctools {
       virtual ~biasing_manager();
 
       /// Set the reference to the parent detector construction
-      void set_detector_construction(detector_construction & dc_);
+      void set_detector_construction(detector_construction& dc_);
 
       /// Check initialization flag
       bool is_initialized() const;
 
       /// Initialize from a container of properties
-      void initialize(const datatools::properties &);
+      void initialize(const datatools::properties&);
 
       // Reset
       void reset();
 
     protected:
-
       void _set_default();
 
     private:
-
-      bool _initialized_; //!< Initialization flag
-      detector_construction * _dc_; //!< Handle to the parent detector construction
-
+      bool _initialized_;          //!< Initialization flag
+      detector_construction* _dc_; //!< Handle to the parent detector construction
     };
 
   } // end of namespace g4

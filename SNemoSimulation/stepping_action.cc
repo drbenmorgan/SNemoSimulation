@@ -5,9 +5,9 @@
 
 // Standard library:
 #include <cstdlib>
-#include <stdexcept>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 // Third party:
 // - Bayeux/datatools:
@@ -25,10 +25,10 @@
 #pragma clang diagnostic pop
 #endif
 
-#include "G4UnitsTable.hh"
-#include "G4VTouchable.hh"
 #include "G4NavigationHistory.hh"
 #include "G4ReferenceCountedHandle.hh"
+#include "G4UnitsTable.hh"
+#include "G4VTouchable.hh"
 
 namespace mctools {
 
@@ -51,18 +51,21 @@ namespace mctools {
       return;
     }
 
-    void stepping_action::set_dumped(bool d_)
+    void
+    stepping_action::set_dumped(bool d_)
     {
       _dumped_ = d_;
       return;
     }
 
-    bool stepping_action::is_dumped() const
+    bool
+    stepping_action::is_dumped() const
     {
       return _dumped_;
     }
 
-    void stepping_action::initialize(const datatools::properties & config_)
+    void
+    stepping_action::initialize(const datatools::properties& config_)
     {
       // Parsing configuration properties...
       loggable_support::_initialize_logging_support(config_);
@@ -74,13 +77,15 @@ namespace mctools {
       return;
     }
 
-    void stepping_action::reset()
+    void
+    stepping_action::reset()
     {
       _dumped_ = false;
       return;
     }
 
-    void stepping_action::UserSteppingAction(const G4Step * g4_step_)
+    void
+    stepping_action::UserSteppingAction(const G4Step* g4_step_)
     {
       DT_LOG_TRACE_ENTERING(_logprio());
       this->_stepping_action_base(g4_step_);
@@ -88,57 +93,80 @@ namespace mctools {
       return;
     }
 
-    std::string stepping_action::g4_track_status_to_label(G4TrackStatus track_status_)
+    std::string
+    stepping_action::g4_track_status_to_label(G4TrackStatus track_status_)
     {
-      switch(track_status_) {
-      case fAlive: return "alive"; // Continue the tracking
-      case fStopButAlive: return "stop_but_alive"; // Invoke active rest physics processes and
-        // and kill the current track afterward
-      case fStopAndKill: return "stop_and_kill"; // Kill the current track
-      case fKillTrackAndSecondaries: return "kill_track_and_secondaries";
-        // Kill the current track and also associated
-        // secondaries.
-      case fSuspend: return "suspend"; // Suspend the current track
-      case fPostponeToNextEvent : return "postpone_to_next_event";
-        // Postpones the tracking of thecurrent track
-        // to the next event.
-      default: return "";
+      switch (track_status_) {
+        case fAlive:
+          return "alive"; // Continue the tracking
+        case fStopButAlive:
+          return "stop_but_alive"; // Invoke active rest physics processes and
+          // and kill the current track afterward
+        case fStopAndKill:
+          return "stop_and_kill"; // Kill the current track
+        case fKillTrackAndSecondaries:
+          return "kill_track_and_secondaries";
+          // Kill the current track and also associated
+          // secondaries.
+        case fSuspend:
+          return "suspend"; // Suspend the current track
+        case fPostponeToNextEvent:
+          return "postpone_to_next_event";
+          // Postpones the tracking of thecurrent track
+          // to the next event.
+        default:
+          return "";
       }
     }
 
-    std::string stepping_action::g4_step_status_to_label(G4StepStatus step_status_)
+    std::string
+    stepping_action::g4_step_status_to_label(G4StepStatus step_status_)
     {
-      switch(step_status_) {
-      case fWorldBoundary:         return "world_boundary";
-        // Step reached the world boundary
-      case fGeomBoundary:          return "geom_boundary";
-        // Step defined by a geometry boundary
-      case fAtRestDoItProc:        return "at_rest_do_it_proc";
-        // Step defined by a PreStepDoItVector
-      case fAlongStepDoItProc:     return "along_step_do_it_proc";
-        // Step defined by a AlongStepDoItVector
-      case fPostStepDoItProc:      return "post_step_do_it_proc";
-        // Step defined by a PostStepDoItVector
-      case fUserDefinedLimit:      return "user_defined_limit";
-        // Step defined by the user Step limit in the logical volume
-      case fExclusivelyForcedProc: return "exclusively_forced_proc";
-        // Step defined by an exclusively forced PostStepDoIt process
-      default:
-      case fUndefined :            return "undefined";
+      switch (step_status_) {
+        case fWorldBoundary:
+          return "world_boundary";
+          // Step reached the world boundary
+        case fGeomBoundary:
+          return "geom_boundary";
+          // Step defined by a geometry boundary
+        case fAtRestDoItProc:
+          return "at_rest_do_it_proc";
+          // Step defined by a PreStepDoItVector
+        case fAlongStepDoItProc:
+          return "along_step_do_it_proc";
+          // Step defined by a AlongStepDoItVector
+        case fPostStepDoItProc:
+          return "post_step_do_it_proc";
+          // Step defined by a PostStepDoItVector
+        case fUserDefinedLimit:
+          return "user_defined_limit";
+          // Step defined by the user Step limit in the logical volume
+        case fExclusivelyForcedProc:
+          return "exclusively_forced_proc";
+          // Step defined by an exclusively forced PostStepDoIt process
+        default:
+        case fUndefined:
+          return "undefined";
       }
     }
 
-    std::string stepping_action::g4_stepping_control_to_label(G4SteppingControl stepping_control_)
+    std::string
+    stepping_action::g4_stepping_control_to_label(G4SteppingControl stepping_control_)
     {
-      switch(stepping_control_) {
-      case NormalCondition: return "normal_condition";
-      case AvoidHitInvocation: return "avoid_hit_invocation_alive";
-      case Debug: return "debug";
-      default: return "";
+      switch (stepping_control_) {
+        case NormalCondition:
+          return "normal_condition";
+        case AvoidHitInvocation:
+          return "avoid_hit_invocation_alive";
+        case Debug:
+          return "debug";
+        default:
+          return "";
       }
     }
 
-    void stepping_action::_stepping_action_base(const G4Step * g4_step_)
+    void
+    stepping_action::_stepping_action_base(const G4Step* g4_step_)
     {
       DT_LOG_TRACE(_logprio(), "Entering...");
       _number_of_steps_++;
@@ -152,17 +180,17 @@ namespace mctools {
       if (process_step) {
 
         // Fetch track informations:
-        G4Track * track           = g4_step_->GetTrack(); // fpSteppingManager->GetTrack();
+        G4Track* track = g4_step_->GetTrack(); // fpSteppingManager->GetTrack();
         G4int current_step_number = track->GetCurrentStepNumber();
-        G4int track_id            = track->GetTrackID();
-        G4int track_parent_id     = track->GetParentID();
+        G4int track_id = track->GetTrackID();
+        G4int track_parent_id = track->GetParentID();
 
-        const G4DynamicParticle * dynamic_particle = track->GetDynamicParticle();
-        G4double dynamic_particle_charge  = dynamic_particle->GetCharge();
+        const G4DynamicParticle* dynamic_particle = track->GetDynamicParticle();
+        G4double dynamic_particle_charge = dynamic_particle->GetCharge();
 
-        const G4ParticleDefinition * particle = track->GetParticleDefinition();
-        G4String particle_name     = particle->GetParticleName();
-        G4ThreeVector position     = track->GetPosition();
+        const G4ParticleDefinition* particle = track->GetParticleDefinition();
+        G4String particle_name = particle->GetParticleName();
+        G4ThreeVector position = track->GetPosition();
         // G4double track_global_time = track->GetGlobalTime();
         // G4double track_local_time  = track->GetLocalTime();
         // G4double track_proper_time = track->GetProperTime();
@@ -204,7 +232,8 @@ namespace mctools {
         // const G4StepPoint * post_step_point = g4_step_->GetPostStepPoint();
         // const G4VTouchable * post_step_touchable = post_step_point->GetTouchable();
         // G4ThreeVector post_position_t = post_step_touchable->GetTranslation();
-        // G4String process_name         = post_step_point->GetProcessDefinedStep()->GetProcessName();
+        // G4String process_name         =
+        // post_step_point->GetProcessDefinedStep()->GetProcessName();
 
         // G4double step_length          = g4_step_->GetStepLength();
         // G4double total_energy_deposit = g4_step_->GetTotalEnergyDeposit();
@@ -217,20 +246,19 @@ namespace mctools {
         // G4ThreeVector delta_momentum  = g4_step_->GetDeltaMomentum(); // obsolete
         // G4double delta_energy         = g4_step_->GetDeltaEnergy();   // obsolete
 
-
         if (_dumped_) {
           std::cerr << "\n**************** G4 STEP DUMP ******************** " << std::endl;
           std::cerr.precision(15);
           std::cerr << "Current step number : " << current_step_number << std::endl;
           std::cerr << "Track Id            : " << track_id << std::endl;
           std::cerr << "Track parent Id     : " << track_parent_id << std::endl;
-          std::cerr << "Dyn. part. charge   : " << dynamic_particle_charge / CLHEP::eplus << " [e]" << std::endl;
+          std::cerr << "Dyn. part. charge   : " << dynamic_particle_charge / CLHEP::eplus << " [e]"
+                    << std::endl;
           std::cerr << "Particle name       : " << particle_name << std::endl;
           std::cerr << "Particle position   : " << position << std::endl;
 
           std::cerr << "\n************* END OF G4 STEP DUMP **************** " << std::endl;
-         }
-
+        }
       }
 
       DT_LOG_TRACE(_logprio(), "Exiting.");
@@ -244,7 +272,7 @@ namespace mctools {
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action,ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action, ocd_)
 {
   // The class name :
   ocd_.set_class_name("mctools::g4::stepping_action");
@@ -260,8 +288,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action,ocd_)
 
   {
     // Description of the 'logging.priority' configuration property :
-    datatools::configuration_property_description & cpd
-      = ocd_.add_property_info();
+    datatools::configuration_property_description& cpd = ocd_.add_property_info();
     cpd.set_name_pattern("logging.priority")
       .set_terse_description("Logging priority threshold")
       .set_traits(datatools::TYPE_STRING)
@@ -282,9 +309,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action,ocd_)
                             "Example::                                              \n"
                             "                                                       \n"
                             "  logging.priority : string = \"warning\"              \n"
-                            "                                                       \n"
-                            )
-      ;
+                            "                                                       \n");
   }
 
   // Additionnal configuration hints :
@@ -292,8 +317,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action,ocd_)
                                "                                                    \n"
                                " #@description Stacking action logging priority     \n"
                                " logging.priority : string = \"warning\"            \n"
-                               "                                                    \n"
-                               );
+                               "                                                    \n");
 
   ocd_.set_validation_support(true);
 
@@ -306,7 +330,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stepping_action,ocd_)
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
 // Registration macro for class 'mctools::g4::manager' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::stepping_action,"mctools::g4::stepping_action")
+DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::stepping_action, "mctools::g4::stepping_action")
 
 /*
 // Code sample that may be useful but care must be taken with the

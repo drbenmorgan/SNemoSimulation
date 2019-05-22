@@ -13,7 +13,6 @@
  *
  */
 
-
 #ifndef MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H
 #define MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H 1
 
@@ -25,10 +24,8 @@ namespace mctools {
   namespace g4 {
 
     /// \brief Physics constructor dedicated to neutrons
-    class neutrons_physics_constructor: public base_physics_constructor
-    {
+    class neutrons_physics_constructor : public base_physics_constructor {
     public:
-
       /// Default constructor
       neutrons_physics_constructor();
 
@@ -36,17 +33,17 @@ namespace mctools {
       virtual ~neutrons_physics_constructor();
 
       /// Initialization
-      virtual void initialize(const datatools::properties & config_,
-                              physics_constructor_dict_type & dict_);
+      virtual void initialize(const datatools::properties& config_,
+                              physics_constructor_dict_type& dict_);
 
       /// Reset
       virtual void reset();
 
       /// Smart print
-      virtual void tree_dump(std::ostream      & out_    = std::clog,
-                             const std::string & title_  = "",
-                             const std::string & indent_ = "",
-                             bool inherit_               = false) const;
+      virtual void tree_dump(std::ostream& out_ = std::clog,
+                             const std::string& title_ = "",
+                             const std::string& indent_ = "",
+                             bool inherit_ = false) const;
 
       /// Particles construction (Geant4 interface)
       virtual void ConstructParticle();
@@ -55,15 +52,13 @@ namespace mctools {
       virtual void ConstructProcess();
 
       /// OCD support
-      static void init_ocd(datatools::object_configuration_description &);
+      static void init_ocd(datatools::object_configuration_description&);
 
     protected:
-
       /// Set default values for attributes
       void _set_defaults();
 
     private:
-
       bool _use_HE_;                         //!< Flag for high-energy regime
       bool _use_gammas_hadronic_process_;    //!< Flag to use hadronic process for gammas
       bool _use_electrons_hadronic_process_; //!< Flag to use hadronic process for electrons
@@ -77,7 +72,6 @@ namespace mctools {
       /// Registration macro :
       DATATOOLS_FACTORY_SYSTEM_AUTO_REGISTRATION_INTERFACE(base_physics_constructor,
                                                            neutrons_physics_constructor)
-
     };
 
   } // end of namespace g4

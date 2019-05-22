@@ -18,16 +18,16 @@
 
 // Standard library:
 #include <iostream>
-#include <string>
-#include <set>
 #include <map>
+#include <set>
+#include <string>
 
 // Third party:
 // - Bayeux/datatools :
-#include <datatools/properties.h>
+#include <datatools/command_utils.h>
 #include <datatools/enriched_base.h>
 #include <datatools/i_tree_dump.h>
-#include <datatools/command_utils.h>
+#include <datatools/properties.h>
 // - Bayeux/geomtools :
 #include <geomtools/manager.h>
 
@@ -47,10 +47,8 @@ namespace mctools {
     /// above.  This allows  to avoid  region collision  when a  given
     /// logical volume  is accidentally set in  two different regions,
     /// which is forbidden in Geant4.
-    class region_info : public datatools::enriched_base
-    {
+    class region_info : public datatools::enriched_base {
     public:
-
       /// Default constructor
       region_info();
 
@@ -64,48 +62,44 @@ namespace mctools {
       void reset();
 
       /// Initialize
-      void initialize(const datatools::properties &,
-                      const geomtools::manager * geo_manager_ = 0);
+      void initialize(const datatools::properties&, const geomtools::manager* geo_manager_ = 0);
 
       /// Check if the region is active (has effective logical volumes)
       bool is_active() const;
 
       /// Add a logical volume in the region
-      void add_logical_volume(const std::string & logical_id_, bool allow_duplicate_ = false);
+      void add_logical_volume(const std::string& logical_id_, bool allow_duplicate_ = false);
 
       /// Remove a logical volume from the region
-      void remove_logical_volume(const std::string & logical_id_);
+      void remove_logical_volume(const std::string& logical_id_);
 
       /// Check if a logical volume belongs to the region given its name
-      bool has_logical_volume(const std::string & logical_id_) const;
+      bool has_logical_volume(const std::string& logical_id_) const;
 
       /// Return the logical volumes identifiers
-      const std::set<std::string> & get_logical_ids() const;
+      const std::set<std::string>& get_logical_ids() const;
 
       /// Return the logical volumes identifiers
-      std::set<std::string> & grab_logical_ids();
+      std::set<std::string>& grab_logical_ids();
 
       /// Smart print
-      virtual void tree_dump(std::ostream      & out_    = std::clog,
-                             const std::string & title_  = "",
-                             const std::string & indent_ = "",
-                             bool inherit_               = false) const;
+      virtual void tree_dump(std::ostream& out_ = std::clog,
+                             const std::string& title_ = "",
+                             const std::string& indent_ = "",
+                             bool inherit_ = false) const;
 
     private:
-
-      bool                  _initialized_; ///< Initialization flag
-      std::set<std::string> _logical_ids_; ///< Set of logical volumes' names associated to the region
-
+      bool _initialized_; ///< Initialization flag
+      std::set<std::string>
+        _logical_ids_; ///< Set of logical volumes' names associated to the region
     };
 
     /// \brief A dictionary of region description data
     typedef std::map<std::string, region_info> region_infos_dict_type;
 
     /// \brief The region setup
-    class regions_setup : public datatools::i_tree_dumpable
-    {
+    class regions_setup : public datatools::i_tree_dumpable {
     public:
-
       /// Default constructor
       regions_setup();
 
@@ -113,45 +107,42 @@ namespace mctools {
       ~regions_setup();
 
       /// Initialize
-      void initialize(const datatools::properties &);
+      void initialize(const datatools::properties&);
 
       /// Reset
       void reset();
 
       /// Set the reference to the geometry manager
-      void set_geometry_manager(const geomtools::manager &);
+      void set_geometry_manager(const geomtools::manager&);
 
       /// Return the const reference to the geometry manager
-      const geomtools::manager & get_geometry_manager() const;
+      const geomtools::manager& get_geometry_manager() const;
 
       /// Return a const reference to the dictionary of region descriptions
-      const region_infos_dict_type & get_region_infos() const;
+      const region_infos_dict_type& get_region_infos() const;
 
       /// Return a mutable reference to the dictionary of region descriptions
-      region_infos_dict_type & grab_region_infos();
+      region_infos_dict_type& grab_region_infos();
 
       /// Check if a region exists given its name
-      bool has_region(const std::string & region_id_) const;
+      bool has_region(const std::string& region_id_) const;
 
       /// Smart print
-      virtual void tree_dump(std::ostream      & out_    = std::clog,
-                             const std::string & title_  = "",
-                             const std::string & indent_ = "",
-                             bool inherit_               = false) const;
+      virtual void tree_dump(std::ostream& out_ = std::clog,
+                             const std::string& title_ = "",
+                             const std::string& indent_ = "",
+                             bool inherit_ = false) const;
 
       // Validate for Geant4...
       // static bool validate_for_geant4(const region_infos_dict_type & region_infos_);
 
     protected:
-
       /// Check the validity of the regions setup
       datatools::command::returned_info _check();
 
     private:
-
-      const geomtools::manager * _geom_manager_; ///< Handle to an external geometry manager
-      region_infos_dict_type     _region_infos_; ///< Dictionary of region descriptions
-
+      const geomtools::manager* _geom_manager_; ///< Handle to an external geometry manager
+      region_infos_dict_type _region_infos_;    ///< Dictionary of region descriptions
     };
 
     /* Future: add arbitrary user info attached to a region.

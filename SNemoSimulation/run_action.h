@@ -24,8 +24,8 @@
 #include <boost/cstdint.hpp>
 #include <boost/scoped_ptr.hpp>
 // - Bayeux/datatools :
-#include <datatools/properties.h>
 #include <datatools/io_factory.h>
+#include <datatools/properties.h>
 // - Bayeux/brio :
 #include <brio/writer.h>
 // - Geant4 :
@@ -56,12 +56,9 @@ namespace mctools {
     class event_action;
 
     /// \brief The Geant4 run action
-    class run_action : public G4UserRunAction,
-                       public loggable_support
-    {
+    class run_action : public G4UserRunAction, public loggable_support {
     public:
-
-      static const int NUMBER_OF_EVENTS_MODULO_NONE    = 0;
+      static const int NUMBER_OF_EVENTS_MODULO_NONE = 0;
       static const int NUMBER_OF_EVENTS_MODULO_DEFAULT = 100;
 
       /// Check initialization flag
@@ -104,10 +101,10 @@ namespace mctools {
       void set_output_data_format(io_utils::data_format_type);
 
       /// Set the output data bank label
-      void set_output_data_bank_label(const std::string &);
+      void set_output_data_bank_label(const std::string&);
 
       /// Set the full path of the output file
-      void set_output_file(const std::string & filename_);
+      void set_output_file(const std::string& filename_);
 
       /// Check if the date save flag is set
       bool save_data() const;
@@ -116,69 +113,67 @@ namespace mctools {
       bool has_out_module() const;
 
       /// Return a mutable reference to the embedded output module
-      dpp::output_module & grab_out_module();
+      dpp::output_module& grab_out_module();
 
       /// Return const reference to the embedded output module
-      const dpp::output_module & get_out_module() const;
+      const dpp::output_module& get_out_module() const;
 
       /// Check if a Brio writer is set to save events
       bool has_brio_writer() const;
 
       /// Return a mutable reference to the embedded Brio writer
-      brio::writer & grab_brio_writer();
+      brio::writer& grab_brio_writer();
 
       /// Return a const reference to the embedded Brio writer
-      const brio::writer & get_brio_writer() const;
+      const brio::writer& get_brio_writer() const;
 
       /// Check if a basic writer is set to save events
       bool has_writer() const;
 
       /// Return a mutable reference to the embedded basic writer
-      datatools::data_writer & grab_writer();
+      datatools::data_writer& grab_writer();
 
       /// Return a const reference to the embedded basic writer
-      const datatools::data_writer & get_writer() const;
+      const datatools::data_writer& get_writer() const;
 
       /// Return a mutable reference to the simulation manager
-      manager & grab_manager();
+      manager& grab_manager();
 
       /// Return a const reference to the simulation manager
-      const manager & get_manager() const;
+      const manager& get_manager() const;
 
       /// Constructor
-      run_action(manager & a_mgr);
+      run_action(manager& a_mgr);
 
       /// Destructor
       virtual ~run_action();
 
       /// Register the event action
-      void register_event_action(event_action &);
+      void register_event_action(event_action&);
 
       /// Initialize from a collection of configuration properties
-      void initialize(const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       /// Reset
       void reset();
 
       /// Basic print
-      void dump(std::ostream & out_ = std::clog) const;
+      void dump(std::ostream& out_ = std::clog) const;
 
       /// Store event data
-      void store_data(const mctools::simulated_data & esd_);
+      void store_data(const mctools::simulated_data& esd_);
 
       /// Geant4 BeginOfRunAction mandatory interface
-      void BeginOfRunAction(const G4Run *);
+      void BeginOfRunAction(const G4Run*);
 
       /// Geant4 EndOfRunAction mandatory interface
-      void EndOfRunAction(const G4Run *);
+      void EndOfRunAction(const G4Run*);
 
     protected:
-
       /// Store event data
-      void _store_data(const mctools::simulated_data & esd_);
+      void _store_data(const mctools::simulated_data& esd_);
 
     protected:
-
       /// Build the run header
       virtual void _build_run_header();
 
@@ -189,21 +184,22 @@ namespace mctools {
       virtual void _set_default();
 
     private:
-
-      bool _initialized_ = false;                 //!< Initialization flag
-      bool _use_run_header_footer_ = false;       //!< Flag to save run header and footer
-      int  _number_of_events_modulo_ = 0;         //!< Event modulo for printing
-      int32_t   _number_of_processed_events_ = 0; //!< Number of processed events
-      int32_t   _number_of_saved_events_ = 0;     //!< Number of saved events
-      manager * _manager_ = nullptr;              //!< Handle to the simulation manager
-      datatools::properties _run_header_;         //!< Run header
-      datatools::properties _run_footer_;         //!< Run footer
+      bool _initialized_ = false;               //!< Initialization flag
+      bool _use_run_header_footer_ = false;     //!< Flag to save run header and footer
+      int _number_of_events_modulo_ = 0;        //!< Event modulo for printing
+      int32_t _number_of_processed_events_ = 0; //!< Number of processed events
+      int32_t _number_of_saved_events_ = 0;     //!< Number of saved events
+      manager* _manager_ = nullptr;             //!< Handle to the simulation manager
+      datatools::properties _run_header_;       //!< Run header
+      datatools::properties _run_footer_;       //!< Run footer
 
       // I/O :
-      bool        _save_data_= false; //!< Flag to save event data
-      io_utils::data_format_type _output_data_format_; //!< The data format of the output file ("plain" or "bank")
-      std::string _output_data_bank_label_; //!< The label of the data bank used to store simulated data ("bank" format only)
-      bool        _output_file_preserve_ = true; //!< Flag to preserve an existing data file
+      bool _save_data_ = false; //!< Flag to save event data
+      io_utils::data_format_type
+        _output_data_format_; //!< The data format of the output file ("plain" or "bank")
+      std::string _output_data_bank_label_;  //!< The label of the data bank used to store simulated
+                                             //!< data ("bank" format only)
+      bool _output_file_preserve_ = true;    //!< Flag to preserve an existing data file
       std::string _output_file_dir_;         //!< Directory where to store the output data file
       std::string _output_file_prefix_;      //!< Prefix of the output data file
       std::string _output_file_format_;      //!< Format of the output data file
@@ -211,12 +207,11 @@ namespace mctools {
       std::string _output_file_;             //!< Full path of the output data file
       std::string _brio_general_info_store_label_;         //!< default "GI"
       std::string _brio_plain_simulated_data_store_label_; //!< default "PSD"
-      event_action * _event_action_ = nullptr; //!< Handle to the event action
+      event_action* _event_action_ = nullptr;              //!< Handle to the event action
 
       /// \brief PIMPL-ized I/O working resources:
       struct io_work_type;
       boost::scoped_ptr<io_work_type> _io_work_; //!< I/O
-
     };
 
   } // end of namespace g4

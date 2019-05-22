@@ -34,11 +34,8 @@ namespace mctools {
   namespace g4 {
 
     /// \brief Tracking action using the Geant4 interface
-    class tracking_action : public G4UserTrackingAction,
-                            public loggable_support
-    {
+    class tracking_action : public G4UserTrackingAction, public loggable_support {
     public:
-
       /// Constructor
       tracking_action();
 
@@ -46,14 +43,13 @@ namespace mctools {
       virtual ~tracking_action();
 
       /// Initialize from properties
-      void initialize(const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       /// Pre-tracking action for the Geant4 interface
       virtual void PreUserTrackingAction(const G4Track*);
 
       /// Post-tracking action for the Geant4 interface
       virtual void PostUserTrackingAction(const G4Track*);
-
     };
 
   } // end of namespace g4

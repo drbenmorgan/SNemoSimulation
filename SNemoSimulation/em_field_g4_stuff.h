@@ -44,12 +44,8 @@ namespace mctools {
     class electromagnetic_field;
 
     /// \brief Working data for G4 EM field handling
-    class em_field_g4_stuff :
-      public datatools::i_tree_dumpable,
-      public loggable_support
-    {
+    class em_field_g4_stuff : public datatools::i_tree_dumpable, public loggable_support {
     public:
-
       /// \Brief Type of ODE stepper
       enum stepper_type {
         STEPPER_INVALID = 0,
@@ -65,11 +61,11 @@ namespace mctools {
         STEPPER_HELIX_IMPLICIT_EULER,
         STEPPER_HELIX_MIXED_EULER,
         STEPPER_HELIX_SIMPLE_RUNGE
-       };
+      };
 
       static std::string label_from_stepper(stepper_type);
 
-      static stepper_type stepper_from_label(const std::string & label_);
+      static stepper_type stepper_from_label(const std::string& label_);
 
       /// Default constructor
       em_field_g4_stuff();
@@ -81,7 +77,7 @@ namespace mctools {
       void initialize();
 
       /// Initialization
-      void initialize(const datatools::properties & config_);
+      void initialize(const datatools::properties& config_);
 
       /// Reset
       void reset();
@@ -90,10 +86,10 @@ namespace mctools {
       bool is_initialized() const;
 
       /// Set the field
-      void set_g4_magnetic_field(magnetic_field * bfield_);
+      void set_g4_magnetic_field(magnetic_field* bfield_);
 
       /// Set the field
-      void set_g4_electromagnetic_field(electromagnetic_field * ebfield_);
+      void set_g4_electromagnetic_field(electromagnetic_field* ebfield_);
 
       /// Check if the G4 EM field is set
       bool has_g4_field() const;
@@ -157,16 +153,15 @@ namespace mctools {
       void set_eps_max(double);
 
       /// Return the field manager
-      G4FieldManager * grab_field_manager();
+      G4FieldManager* grab_field_manager();
 
       /// Smart print
-      virtual void tree_dump(std::ostream      & out_    = std::clog,
-                             const std::string & title_  = "",
-                             const std::string & indent_ = "",
-                             bool inherit_               = false) const;
+      virtual void tree_dump(std::ostream& out_ = std::clog,
+                             const std::string& title_ = "",
+                             const std::string& indent_ = "",
+                             bool inherit_ = false) const;
 
     protected:
-
       /// Set default attributes' values
       void _set_defaults();
 
@@ -174,30 +169,30 @@ namespace mctools {
       void _at_init();
 
     private:
-
       bool _initialized_; //!< Initialization flag
 
-      magnetic_field        * _b_field_;  //!< Pure magnetic field (referenced, not deleted)
-      electromagnetic_field * _eb_field_; //!< Electromagnetic field (referenced, not deleted)
+      magnetic_field* _b_field_;         //!< Pure magnetic field (referenced, not deleted)
+      electromagnetic_field* _eb_field_; //!< Electromagnetic field (referenced, not deleted)
 
       // Some useful documentation: http://geant4.in2p3.fr/2007/prog/JohnApostolakis/EMField.pdf
       stepper_type _stepper_type_; //!< Type of the ODE stepper
       double _min_step_;           //!< Minimum step length
       double _delta_chord_;        //!< Upper bound for the chord distance
-      double _delta_one_step_;     //!< Position error which is acceptable in an integration step (same order of magnitude as _delta_intersection_)
-      double _delta_intersection_; //!< Upper limit inaccuracy of a single boundary crossing (same order of magnitude as _delta_one_step_)
-      double _eps_min_;            //!< Lower limit on the relative error of the position/momentum inaccuracy
-      double _eps_max_;            //!< Upper limit on the relative error of the position/momentum inaccuracy
-      bool   _spin_;               //!< Spin flag
-      bool   _propagate_to_daughters_; //!< Flag to propagate the field to all daughter volumes
+      double _delta_one_step_; //!< Position error which is acceptable in an integration step (same
+                               //!< order of magnitude as _delta_intersection_)
+      double _delta_intersection_; //!< Upper limit inaccuracy of a single boundary crossing (same
+                                   //!< order of magnitude as _delta_one_step_)
+      double _eps_min_; //!< Lower limit on the relative error of the position/momentum inaccuracy
+      double _eps_max_; //!< Upper limit on the relative error of the position/momentum inaccuracy
+      bool _spin_;      //!< Spin flag
+      bool _propagate_to_daughters_; //!< Flag to propagate the field to all daughter volumes
 
-      G4EquationOfMotion *     _equation_;           //!< Equation of motion (deleted by the chord finder!)
-      G4PropagatorInField *    _field_propagator_;   //!< Field propagator   (referenced, not deleted)
-      G4MagIntegratorStepper * _field_stepper_;      //!< ODE stepper        (deleted by this object)
-      G4MagInt_Driver*         _integration_driver_; //!< Integration driver (deleted by the chord finder!)
-      G4ChordFinder *          _chord_finder_;       //!< Chord finder       (deleted by this object)
-      G4FieldManager *         _field_manager_;      //!< Field manager      (deleted by this object)
-
+      G4EquationOfMotion* _equation_; //!< Equation of motion (deleted by the chord finder!)
+      G4PropagatorInField* _field_propagator_; //!< Field propagator   (referenced, not deleted)
+      G4MagIntegratorStepper* _field_stepper_; //!< ODE stepper        (deleted by this object)
+      G4MagInt_Driver* _integration_driver_; //!< Integration driver (deleted by the chord finder!)
+      G4ChordFinder* _chord_finder_;         //!< Chord finder       (deleted by this object)
+      G4FieldManager* _field_manager_;       //!< Field manager      (deleted by this object)
     };
 
   } // end of namespace g4

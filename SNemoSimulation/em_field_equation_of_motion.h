@@ -46,31 +46,27 @@ namespace mctools {
     /// The problem here is that only the SetChargeMomentumMass method is available from the Geant4
     /// library and it is not possible to set the specific anomaly  that depends on the current
     /// tracked particle.
-    class em_field_equation_of_motion :
-      public G4EquationOfMotion,
-      public loggable_support
-    {
+    class em_field_equation_of_motion : public G4EquationOfMotion, public loggable_support {
     public:
-
       /// \brief Index of the tracked particle's dynamic variables used
       ///        in the integration of motion
       enum y_index {
-        RX = 0, ///< Position X coordinate
-        RY = 1, ///< Position Y coordinate
-        RZ = 2, ///< Position Z coordinate
-        PX = 3, ///< Momentum X coordinate
-        PY = 4, ///< Momentum Y coordinate
-        PZ = 5, ///< Momentum Z coordinate
-        UNDEF_6     =  6, ///< Unused dynamic variable
-        GLOBAL_TIME =  7, ///< Global time (laboratory frame time of flight)
-        UNDEF_8     =  8, ///< Unused dynamic variable
-        SPINX       =  9, ///< Spin X coordinate
-        SPINY       = 10, ///< Spin Y coordinate
-        SPINZ       = 11  ///< Spin Z coordinate
+        RX = 0,          ///< Position X coordinate
+        RY = 1,          ///< Position Y coordinate
+        RZ = 2,          ///< Position Z coordinate
+        PX = 3,          ///< Momentum X coordinate
+        PY = 4,          ///< Momentum Y coordinate
+        PZ = 5,          ///< Momentum Z coordinate
+        UNDEF_6 = 6,     ///< Unused dynamic variable
+        GLOBAL_TIME = 7, ///< Global time (laboratory frame time of flight)
+        UNDEF_8 = 8,     ///< Unused dynamic variable
+        SPINX = 9,       ///< Spin X coordinate
+        SPINY = 10,      ///< Spin Y coordinate
+        SPINZ = 11       ///< Spin Z coordinate
       };
 
       /// Constructor
-      em_field_equation_of_motion(G4Field * field_);
+      em_field_equation_of_motion(G4Field* field_);
 
       /// Destructor
       virtual ~em_field_equation_of_motion();
@@ -80,9 +76,7 @@ namespace mctools {
       //  spin of the particle.
       /// Derivatives are defined as:
       ///   dr/ds, dp/ds, dt/ds, dSpin/ds
-      void EvaluateRhsGivenB(const G4double y_[],
-                             const G4double field_[6],
-                             G4double dydx_[]) const;
+      void EvaluateRhsGivenB(const G4double y_[], const G4double field_[6], G4double dydx_[]) const;
 
       /// Set the charge, momentum and mass of the current particle
       /// used to set the equation's coefficients
@@ -115,19 +109,17 @@ namespace mctools {
       // void reset();
 
     protected:
-
       void _set_defaults();
 
     private:
-
       // Configuration parameters:
-      bool   _with_spin_;     ///< Particle with spin
-      bool   _only_magnetic_; ///< Field is only magnetic
+      bool _with_spin_;     ///< Particle with spin
+      bool _only_magnetic_; ///< Field is only magnetic
 
-      double _mass_;          ///< Effective mass of the particle
-      double _charge_;        ///< Effective charge of the particle
-      double _anomaly_;       ///< Magnetic anomaly of the particle
-      double _momentum_;      ///< Momentum of the particle
+      double _mass_;     ///< Effective mass of the particle
+      double _charge_;   ///< Effective charge of the particle
+      double _anomaly_;  ///< Magnetic anomaly of the particle
+      double _momentum_; ///< Momentum of the particle
 
       // Coefficients computed from particle effective mass and charge:
       double _charge_coef_;
@@ -137,7 +129,6 @@ namespace mctools {
       double _energy_;
       double _gamma_;
       double _beta_;
-
     };
 
   } // end of namespace g4
