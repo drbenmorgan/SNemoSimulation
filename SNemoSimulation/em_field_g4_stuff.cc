@@ -55,7 +55,7 @@
 #include <SNemoSimulation/em_field_equation_of_motion.h>
 #include <SNemoSimulation/magnetic_field.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -806,4 +806,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

@@ -20,7 +20,7 @@
 // This project:
 #include <SNemoSimulation/processes/em_model_factory.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -476,4 +476,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

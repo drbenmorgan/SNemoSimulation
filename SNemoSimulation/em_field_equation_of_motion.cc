@@ -17,7 +17,7 @@
 #include <SNemoSimulation/em_field_g4_stuff.h>
 #include <SNemoSimulation/em_field_g4_utils.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -59,7 +59,7 @@ namespace mctools {
     em_field_equation_of_motion::em_field_equation_of_motion(G4Field* em_field_)
       : G4EquationOfMotion(em_field_)
     {
-      // std::cerr << "DEVEL: " << "mctools::g4::em_field_equation_of_motion::CTOR: "
+      // std::cerr << "DEVEL: " << "snemo::g4::em_field_equation_of_motion::CTOR: "
       //           << "Entering..."
       //           << std::endl;
       _set_defaults();
@@ -68,7 +68,7 @@ namespace mctools {
 
     em_field_equation_of_motion::~em_field_equation_of_motion()
     {
-      // std::cerr << "DEVEL: " << "mctools::g4::em_field_equation_of_motion::DTOR: "
+      // std::cerr << "DEVEL: " << "snemo::g4::em_field_equation_of_motion::DTOR: "
       //           << "Entering..."
       //           << std::endl;
       return;
@@ -231,4 +231,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

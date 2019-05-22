@@ -22,7 +22,7 @@
 // - Bayeux/geomtools :
 #include <geomtools/materials_plugin.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -569,15 +569,15 @@ namespace mctools {
     */
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::region_info, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::region_info, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::region_info");
+  ocd_.set_class_name("snemo::g4::region_info");
 
   // The class terse description :
   ocd_.set_class_description("The description of a Geant4 region attached to the virtual geometry");
@@ -661,5 +661,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::region_info, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::region_info' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::region_info, "mctools::g4::region_info")
+// Registration macro for class 'snemo::g4::region_info' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::region_info, "snemo::g4::region_info")

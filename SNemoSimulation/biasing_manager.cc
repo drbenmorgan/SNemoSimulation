@@ -11,7 +11,7 @@
 // This project:
 #include <SNemoSimulation/detector_construction.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -70,4 +70,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

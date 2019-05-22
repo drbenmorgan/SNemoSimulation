@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_PROCESSES_EM_EXTRA_MODELS_H
-#define MCTOOLS_G4_PROCESSES_EM_EXTRA_MODELS_H
+#ifndef SNEMOSIMULATION_G4_PROCESSES_EM_EXTRA_MODELS_H
+#define SNEMOSIMULATION_G4_PROCESSES_EM_EXTRA_MODELS_H
 
 // Third party:
 // Bayeux/datatools:
@@ -23,7 +23,7 @@
 
 class G4EmConfigurator;
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -158,13 +158,13 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 // /// OCD support : interface
 // #include <datatools/ocd_macros.h>
-// DOCD_CLASS_DECLARATION(mctools::g4::processes::em_extra_models)
+// DOCD_CLASS_DECLARATION(snemo::g4::processes::em_extra_models)
 
-#endif // MCTOOLS_G4_PROCESSES_EM_EXTRA_MODELS_H
+#endif // SNEMOSIMULATION_G4_PROCESSES_EM_EXTRA_MODELS_H
 
 /*
 ** Local Variables: --

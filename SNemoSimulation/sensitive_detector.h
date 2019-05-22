@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_SENSITIVE_DETECTOR_H
-#define MCTOOLS_G4_SENSITIVE_DETECTOR_H 1
+#ifndef SNEMOSIMULATION_G4_SENSITIVE_DETECTOR_H
+#define SNEMOSIMULATION_G4_SENSITIVE_DETECTOR_H 1
 
 // Standard library:
 #include <list>
@@ -47,7 +47,7 @@
 
 class G4Step;
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -244,13 +244,13 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /// OCD support : interface
 #include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::sensitive_detector)
+DOCD_CLASS_DECLARATION(snemo::g4::sensitive_detector)
 
-#endif // MCTOOLS_G4_SENSITIVE_DETECTOR_H
+#endif // SNEMOSIMULATION_G4_SENSITIVE_DETECTOR_H
 
 /*
 ** Local Variables: --

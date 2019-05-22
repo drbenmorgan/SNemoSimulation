@@ -30,14 +30,14 @@
  *
  */
 
-#ifndef MCTOOLS_G4_TRACK_HISTORY_H
-#define MCTOOLS_G4_TRACK_HISTORY_H 1
+#ifndef SNEMOSIMULATION_G4_TRACK_HISTORY_H
+#define SNEMOSIMULATION_G4_TRACK_HISTORY_H 1
 
 // Standard library:
 #include <map>
 #include <string>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -123,9 +123,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_TRACK_HISTORY_H
+#endif // SNEMOSIMULATION_G4_TRACK_HISTORY_H
 
 /*
 ** Local Variables: --

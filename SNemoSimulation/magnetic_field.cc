@@ -28,7 +28,7 @@
 // This project:
 #include <SNemoSimulation/em_field_g4_utils.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -219,7 +219,7 @@ namespace mctools {
           if (! has_mag_field_manager()) {
           if (_geom_manager_ == 0) {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "Missing geometry manager !";
           throw std::logic_error(message.str());
           }
@@ -229,7 +229,7 @@ namespace mctools {
           }
           else {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "Missing field plugin name property '" << "magnetic_field.geom_plugin" << "' !";
           throw std::logic_error(message.str());
           }
@@ -245,7 +245,7 @@ namespace mctools {
           }
           else {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "No EM field geometry plugin named '"
           << mag_field_plugin_name << "' !";
           throw std::logic_error(message.str());
@@ -257,14 +257,14 @@ namespace mctools {
           }
           else {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "Missing field name property '" << "magnetic_field.name" << "' !";
           throw std::logic_error(message.str());
           }
 
           if (! _mag_field_manager_->has_field(_mag_field_name_)) {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "No field named '" << _mag_field_name_ << "' !";
           throw std::logic_error(message.str());
           }
@@ -272,7 +272,7 @@ namespace mctools {
 
           if (! _mag_field_->is_magnetic_field()) {
           std::ostringstream message;
-          message << "mctools::g4::magnetic_field::initialize: "
+          message << "snemo::g4::magnetic_field::initialize: "
           << "Field '" << _mag_field_name_ << "' is not a magnetic field !";
           throw std::logic_error(message.str());
           }
@@ -374,4 +374,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

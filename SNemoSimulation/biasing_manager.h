@@ -14,8 +14,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_BIASING_MANAGER_H
-#define MCTOOLS_G4_BIASING_MANAGER_H 1
+#ifndef SNEMOSIMULATION_G4_BIASING_MANAGER_H
+#define SNEMOSIMULATION_G4_BIASING_MANAGER_H 1
 
 // Standard library:
 #include <string>
@@ -31,7 +31,7 @@ namespace datatools {
   class properties;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -69,9 +69,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_BIASING_MANAGER_H
+#endif // SNEMOSIMULATION_G4_BIASING_MANAGER_H
 
 /*
 ** Local Variables: --

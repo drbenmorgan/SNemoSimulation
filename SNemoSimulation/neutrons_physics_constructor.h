@@ -13,13 +13,13 @@
  *
  */
 
-#ifndef MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H
-#define MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H 1
+#ifndef SNEMOSIMULATION_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H
+#define SNEMOSIMULATION_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H 1
 
 // This project:
 #include <SNemoSimulation/base_physics_constructor.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -76,13 +76,13 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /// OCD support : interface
 #include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::neutrons_physics_constructor)
+DOCD_CLASS_DECLARATION(snemo::g4::neutrons_physics_constructor)
 
-#endif // MCTOOLS_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H
+#endif // SNEMOSIMULATION_G4_NEUTRONS_PHYSICS_CONSTRUCTOR_H
 
 /*
 ** Local Variables: --

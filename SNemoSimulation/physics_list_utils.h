@@ -4,8 +4,8 @@
  * Last modified: 2013-07-04
  */
 
-#ifndef MCTOOLS_G4_PHYSICS_LIST_UTILS_H
-#define MCTOOLS_G4_PHYSICS_LIST_UTILS_H 1
+#ifndef SNEMOSIMULATION_G4_PHYSICS_LIST_UTILS_H
+#define SNEMOSIMULATION_G4_PHYSICS_LIST_UTILS_H 1
 
 // Standard library:
 #include <map>
@@ -22,7 +22,7 @@
 #include <G4VModularPhysicsList.hh>
 #include <G4VPhysicsConstructor.hh>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -101,9 +101,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_PHYSICS_LIST_UTILS_H
+#endif // SNEMOSIMULATION_G4_PHYSICS_LIST_UTILS_H
 
 /*
 ** Local Variables: --

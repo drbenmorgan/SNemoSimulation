@@ -27,11 +27,11 @@
 #include <SNemoSimulation/manager.h>
 #include <SNemoSimulation/simulation_ctrl.h>
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
 
     // Registration instantiation macro :
-    DPP_MODULE_REGISTRATION_IMPLEMENT(SNemoSimulationModule, "mctools::g4::SNemoSimulationModule")
+    DPP_MODULE_REGISTRATION_IMPLEMENT(SNemoSimulationModule, "snemo::g4::SNemoSimulationModule")
 
     // Constructor :
     SNemoSimulationModule::SNemoSimulationModule(datatools::logger::priority logging_priority)
@@ -78,7 +78,7 @@ namespace mctools {
         }
       }
 
-      // Special setup parameters for the mctools::g4 simulation manager :
+      // Special setup parameters for the snemo::g4 simulation manager :
 
       // Force non-interactive parameters:
       geant4Parameters_.interactive = false;
@@ -352,7 +352,7 @@ namespace mctools {
       }
 
       // Setup :
-      mctools::g4::manager_parameters::setup(geant4Parameters_, *geant4Simulation_);
+      snemo::g4::manager_parameters::setup(geant4Parameters_, *geant4Simulation_);
     }
 
     void
@@ -409,7 +409,7 @@ namespace mctools {
       return 0;
     }
   } // end of namespace g4
-} // end of namespace mctools
+} // end of namespace snemo
 /*
 ** Local Variables: --
 ** mode: c++ --

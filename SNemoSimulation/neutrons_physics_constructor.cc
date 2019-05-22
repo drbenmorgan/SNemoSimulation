@@ -98,14 +98,14 @@
   inelastic, capture and fission below energies of 20 MeV
 */
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
     DATATOOLS_FACTORY_SYSTEM_AUTO_REGISTRATION_IMPLEMENTATION(
       base_physics_constructor,
       neutrons_physics_constructor,
-      "mctools::g4::neutrons_physics_constructor")
+      "snemo::g4::neutrons_physics_constructor")
 
     // *** neutrons_physics_constructor *** //
     neutrons_physics_constructor::neutrons_physics_constructor() : base_physics_constructor()
@@ -482,7 +482,7 @@ namespace mctools {
     {
 
       // Inherits configuration properties from its base class:
-      // ::mctools::g4::base_physics_constructor::init_ocd(ocd_);
+      // ::snemo::g4::base_physics_constructor::init_ocd(ocd_);
 
       {
         // Description of the 'neutrons.use_high_energy_process' configuration property :
@@ -614,18 +614,18 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(::mctools::g4::neutrons_physics_constructor, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(::snemo::g4::neutrons_physics_constructor, ocd_)
 {
-  ocd_.set_class_name("mctools::g4::neutrons_physics_constructor");
+  ocd_.set_class_name("snemo::g4::neutrons_physics_constructor");
   ocd_.set_class_description(
     "The Geant4 simulation manager embedded nuclear neutrons physics list");
   ocd_.set_class_library("mctools_g4");
   ocd_.set_class_documentation("The Geant4 simulation manager class embedded \n"
                                "nuclear neutrons physics list.               \n");
 
-  ::mctools::g4::neutrons_physics_constructor::init_ocd(ocd_);
+  ::snemo::g4::neutrons_physics_constructor::init_ocd(ocd_);
 
   ocd_.set_configuration_hints("Not available yet                    \n");
   ocd_.set_validation_support(true);
@@ -635,6 +635,6 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(::mctools::g4::neutrons_physics_constructor, ocd
 
 DOCD_CLASS_IMPLEMENT_LOAD_END()
 
-// Registration macro for class 'mctools::g4::neutrons_physics_constructor' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::neutrons_physics_constructor,
-                               "mctools::g4::neutrons_physics_constructor")
+// Registration macro for class 'snemo::g4::neutrons_physics_constructor' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::neutrons_physics_constructor,
+                               "snemo::g4::neutrons_physics_constructor")

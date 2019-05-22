@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_BASE_PHYSICS_CONSTRUCTOR_H
-#define MCTOOLS_G4_BASE_PHYSICS_CONSTRUCTOR_H 1
+#ifndef SNEMOSIMULATION_G4_BASE_PHYSICS_CONSTRUCTOR_H
+#define SNEMOSIMULATION_G4_BASE_PHYSICS_CONSTRUCTOR_H 1
 
 // Standard library:
 #include <map>
@@ -32,7 +32,7 @@
 #include <SNemoSimulation/loggable_support.h>
 #include <SNemoSimulation/physics_list_utils.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -121,9 +121,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_BASE_PHYSICS_CONSTRUCTOR_H
+#endif // SNEMOSIMULATION_G4_BASE_PHYSICS_CONSTRUCTOR_H
 
 /*
 ** Local Variables: --

@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_EM_FIELD_EQUATION_OF_MOTION_H
-#define MCTOOLS_G4_EM_FIELD_EQUATION_OF_MOTION_H
+#ifndef SNEMOSIMULATION_G4_EM_FIELD_EQUATION_OF_MOTION_H
+#define SNEMOSIMULATION_G4_EM_FIELD_EQUATION_OF_MOTION_H
 
 // Third party:
 // - Geant4:
@@ -25,7 +25,7 @@
 
 class G4Field;
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -133,9 +133,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_EM_FIELD_EQUATION_OF_MOTION_H
+#endif // SNEMOSIMULATION_G4_EM_FIELD_EQUATION_OF_MOTION_H
 
 /*
 ** Local Variables: --

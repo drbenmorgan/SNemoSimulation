@@ -1,7 +1,7 @@
 /// \file mctools/stepping_verbose.h
 
-#ifndef MCTOOLS_G4_STEPPING_VERBOSE_H
-#define MCTOOLS_G4_STEPPING_VERBOSE_H 1
+#ifndef SNEMOSIMULATION_G4_STEPPING_VERBOSE_H
+#define SNEMOSIMULATION_G4_STEPPING_VERBOSE_H 1
 
 // Third party:
 // - Geant4:
@@ -15,7 +15,7 @@
 #pragma clang diagnostic pop
 #endif
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -39,7 +39,7 @@ namespace mctools {
 
 } // end of namespace snemo
 
-#endif // MCTOOLS_G4_STEPPING_VERBOSE_H
+#endif // SNEMOSIMULATION_G4_STEPPING_VERBOSE_H
 
 /*
 ** Local Variables: --

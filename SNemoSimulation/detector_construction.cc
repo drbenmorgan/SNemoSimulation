@@ -61,7 +61,7 @@
 #include <SNemoSimulation/manager.h>
 #include <SNemoSimulation/sensitive_detector.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -126,7 +126,7 @@ namespace mctools {
       _SD_params_.set_key_label("name");
       _SD_params_.set_meta_label("type");
       _SD_params_.set_description(
-        "Sensitive detectors' configuration (mctools::g4::detector_construction)");
+        "Sensitive detectors' configuration (snemo::g4::detector_construction)");
       return;
     }
 
@@ -528,7 +528,7 @@ namespace mctools {
       world_physical_volume = _g4_construct();
 
       if (world_physical_volume == 0) {
-        G4Exception("mctools::g4::detector_construction::Construct",
+        G4Exception("snemo::g4::detector_construction::Construct",
                     "GeometryError",
                     FatalException,
                     "Missing world physical volume !");
@@ -1774,15 +1774,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::detector_construction, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::detector_construction");
+  ocd_.set_class_name("snemo::g4::detector_construction");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 simulation mandatory detector construction");
@@ -1942,7 +1942,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "where ``SDNAME`` is the name of the sensitive detector                \n"
         "and ``KEY1``, ``TYPE1`` and  ``VALUE1`` are the property's identifier, type \n"
         "and value respectively. Please refer to the OCD manual of the         \n"
-        "``mctools::g4::sensitive_detector`` class for further documentation   \n"
+        "``snemo::g4::sensitive_detector`` class for further documentation   \n"
         "about the available configuration parameters for *sensitive detector* objects.\n");
   }
 
@@ -1953,7 +1953,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
       .set_terse_description("Record the *track ID* attached to a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Record the track Id for the 'tracker' hits::                          \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -1970,7 +1970,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record *primary particle* flag attached to a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Record the 'primary particle' flag::                                  \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -1987,7 +1987,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record the *alpha quenching* flag attached to a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Activate alpha quenching for the 'calo' hits::                        \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2003,14 +2003,14 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
       .set_terse_description("Record the *major track* flag attached to a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
                    "  sensitive.calo_SD.record_major_track    : boolean = 1               \n"
                    "  sensitive.tracker_SD.record_major_track : boolean = 0               \n"
                    "                                                                      \n"
-                   "See OCD manual of the ``mctools::g4::sensitive_detector`` class.      \n");
+                   "See OCD manual of the ``snemo::g4::sensitive_detector`` class.      \n");
   }
 
   {
@@ -2022,7 +2022,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
       .set_explicit_unit(true)
       .set_unit_label("energy")
       .set_default_value_real(0.0)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                                 \n"
                    "                                                                          \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"            \n"
@@ -2039,7 +2039,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record the *sensitive category* attached to a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2056,7 +2056,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record the start and stop *momenta* of the step for a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2073,14 +2073,14 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record the start and stop *kinetic energy* of the step for a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
                    "  sensitive.calo_SD.record_kinetic_energy    : boolean = 1            \n"
                    "  sensitive.tracker_SD.record_kinetic_energy : boolean = 0            \n"
                    "                                                                      \n"
-                   "See OCD manual of the ``mctools::g4::sensitive_detector`` class.      \n");
+                   "See OCD manual of the ``snemo::g4::sensitive_detector`` class.      \n");
   }
 
   {
@@ -2091,7 +2091,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
                              "associated to a given sensitive detector")
       .set_traits(datatools::TYPE_INTEGER)
       .set_default_value_integer(1000)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2107,7 +2107,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
       .set_terse_description("Drop zero energy deposit step hits for a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2124,7 +2124,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
         "Record the Geant4 geometry volume informations for a given sensitive detector")
       .set_traits(datatools::TYPE_BOOLEAN)
       .set_default_value_boolean(false)
-      .set_long_description("See OCD manual of the ``mctools::g4::sensitive_detector`` class.\n")
+      .set_long_description("See OCD manual of the ``snemo::g4::sensitive_detector`` class.\n")
       .add_example("Example::                                                             \n"
                    "                                                                      \n"
                    "  sensitive.detectors : string[2] = \"calo_SD\" \"tracker_SD\"        \n"
@@ -2404,7 +2404,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
     "  sensitive.tracker_SD.record_track_id : boolean = 1                         \n"
     "                                                                             \n"
     "Additional properties for *sensitive detector* are detailed in the           \n"
-    "OCD manual for the ``mctools::g4::sensitive_detector`` class.                \n");
+    "OCD manual for the ``snemo::g4::sensitive_detector`` class.                \n");
 
   ocd_.set_validation_support(true);
 
@@ -2416,6 +2416,6 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::detector_construction, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::detector_construction' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::detector_construction,
-                               "mctools::g4::detector_construction")
+// Registration macro for class 'snemo::g4::detector_construction' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::detector_construction,
+                               "snemo::g4::detector_construction")

@@ -12,8 +12,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_STACKING_ACTION_H
-#define MCTOOLS_G4_STACKING_ACTION_H 1
+#ifndef SNEMOSIMULATION_G4_STACKING_ACTION_H
+#define SNEMOSIMULATION_G4_STACKING_ACTION_H 1
 
 // Standard library:
 #include <string>
@@ -35,7 +35,7 @@ namespace datatools {
   class properties;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -71,13 +71,13 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /// OCD support : interface
 #include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::stacking_action)
+DOCD_CLASS_DECLARATION(snemo::g4::stacking_action)
 
-#endif // MCTOOLS_G4_STACKING_ACTION_H
+#endif // SNEMOSIMULATION_G4_STACKING_ACTION_H
 
 /*
 ** Local Variables: --

@@ -89,7 +89,7 @@
 #include "G4VisExecutive.hh"
 #endif // G4VIS_USE
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
 
     //----------------------------------------------------------------------
@@ -160,12 +160,12 @@ namespace mctools {
 
     manager::~manager()
     {
-      // std::cerr << "DEVEL: mctools::g4::manager::DTOR: Entering..." << std::endl;
+      // std::cerr << "DEVEL: snemo::g4::manager::DTOR: Entering..." << std::endl;
       if (_initialized_) {
-        // std::cerr << "DEVEL: mctools::g4::manager::DTOR: Reset..." << std::endl;
+        // std::cerr << "DEVEL: snemo::g4::manager::DTOR: Reset..." << std::endl;
         reset();
       }
-      // std::cerr << "DEVEL: mctools::g4::manager::DTOR: Exiting." << std::endl;
+      // std::cerr << "DEVEL: snemo::g4::manager::DTOR: Exiting." << std::endl;
     }
 
     void
@@ -180,12 +180,12 @@ namespace mctools {
     void
     manager::reset()
     {
-      // std::cerr << "DEVEL: mctools::g4::manager::reset: Entering..." << std::endl;
+      // std::cerr << "DEVEL: snemo::g4::manager::reset: Entering..." << std::endl;
       DT_THROW_IF(!_initialized_, std::logic_error, "Manager is not initialized !");
       _initialized_ = false;
       this->reset_impl();
       _init_defaults();
-      // std::cerr << "DEVEL: mctools::g4::manager::reset: Exiting." << std::endl;
+      // std::cerr << "DEVEL: snemo::g4::manager::reset: Exiting." << std::endl;
     }
 
     void
@@ -1027,7 +1027,7 @@ namespace mctools {
     void
     manager::dump(std::ostream& os) const
     {
-      dump_base(os, "mctools::g4::manager: ", "");
+      dump_base(os, "snemo::g4::manager: ", "");
     }
 
     void
@@ -1238,7 +1238,7 @@ namespace mctools {
         if (!boost::filesystem::exists(g4_macro)) {
           std::ostringstream message;
           message << "Macro '" << g4_macro << "' does not exist !";
-          G4Exception("mctools::g4::manager::_at_run_simulation",
+          G4Exception("snemo::g4::manager::_at_run_simulation",
                       "FileError",
                       RunMustBeAborted,
                       message.str().c_str());
@@ -2070,4 +2070,4 @@ namespace mctools {
       _CTs_["EG"] = CT_type{};
     }
   } // end of namespace g4
-} // end of namespace mctools
+} // end of namespace snemo

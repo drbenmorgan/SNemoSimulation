@@ -13,10 +13,10 @@
  *
  */
 
-#ifndef MCTOOLS_G4_EM_FIELD_G4_UTILS_H
-#define MCTOOLS_G4_EM_FIELD_G4_UTILS_H
+#ifndef SNEMOSIMULATION_G4_EM_FIELD_G4_UTILS_H
+#define SNEMOSIMULATION_G4_EM_FIELD_G4_UTILS_H
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -38,9 +38,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_EM_FIELD_G4_UTILS_H
+#endif // SNEMOSIMULATION_G4_EM_FIELD_G4_UTILS_H
 
 /*
 ** Local Variables: --

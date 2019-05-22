@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_MAGNETIC_FIELD_H
-#define MCTOOLS_G4_MAGNETIC_FIELD_H 1
+#ifndef SNEMOSIMULATION_G4_MAGNETIC_FIELD_H
+#define SNEMOSIMULATION_G4_MAGNETIC_FIELD_H 1
 
 // Standard library:
 #include <map>
@@ -43,7 +43,7 @@ namespace emfield {
   class electromagnetic_field_manager;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -130,9 +130,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_MAGNETIC_FIELD_H
+#endif // SNEMOSIMULATION_G4_MAGNETIC_FIELD_H
 
 /*
 ** Local Variables: --

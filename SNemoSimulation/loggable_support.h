@@ -4,8 +4,8 @@
  * Last modified : 2013-06-03
  */
 
-#ifndef MCTOOLS_G4_LOGGABLE_SUPPORT_H
-#define MCTOOLS_G4_LOGGABLE_SUPPORT_H 1
+#ifndef SNEMOSIMULATION_G4_LOGGABLE_SUPPORT_H
+#define SNEMOSIMULATION_G4_LOGGABLE_SUPPORT_H 1
 
 // Third party:
 // - Bayeux/datatools :
@@ -15,7 +15,7 @@ namespace datatools {
   class properties;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -57,9 +57,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_LOGGABLE_SUPPORT_H
+#endif // SNEMOSIMULATION_G4_LOGGABLE_SUPPORT_H
 
 // Local Variables: --
 // mode: c++ --

@@ -34,7 +34,7 @@
 #include <G4ThreeVector.hh>
 #include <G4VProcess.hh>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -1124,15 +1124,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::sensitive_detector, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::sensitive_detector, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::sensitive_detector");
+  ocd_.set_class_name("snemo::g4::sensitive_detector");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 virtual sensitive detector");
@@ -1499,5 +1499,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::sensitive_detector, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::sensitive_detector' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::sensitive_detector, "mctools::g4::sensitive_detector")
+// Registration macro for class 'snemo::g4::sensitive_detector' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::sensitive_detector, "snemo::g4::sensitive_detector")

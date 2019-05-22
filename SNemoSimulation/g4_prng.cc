@@ -28,7 +28,7 @@
 // - Bayeux/mygsl:
 #include <mygsl/rng.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -116,12 +116,12 @@ namespace mctools {
     std::string
     g4_prng::name() const
     {
-      return "mctools::g4::g4_prng";
+      return "snemo::g4::g4_prng";
     }
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /*
 ** Local Variables: --

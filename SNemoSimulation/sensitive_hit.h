@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_SENSITIVE_HIT_H
-#define MCTOOLS_G4_SENSITIVE_HIT_H 1
+#ifndef SNEMOSIMULATION_G4_SENSITIVE_HIT_H
+#define SNEMOSIMULATION_G4_SENSITIVE_HIT_H 1
 
 // Third party:
 // - Geant4
@@ -23,7 +23,7 @@
 // This project:
 #include <mctools/base_step_hit.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -51,9 +51,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_SENSITIVE_HIT_H
+#endif // SNEMOSIMULATION_G4_SENSITIVE_HIT_H
 
 /*
 ** Local Variables: --

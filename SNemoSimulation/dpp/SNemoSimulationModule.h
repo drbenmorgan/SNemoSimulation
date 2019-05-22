@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_SIMULATION_MODULE_H
-#define MCTOOLS_G4_SIMULATION_MODULE_H 1
+#ifndef SNEMOSIMULATION_G4_SIMULATION_MODULE_H
+#define SNEMOSIMULATION_G4_SIMULATION_MODULE_H 1
 
 // Third party:
 // - Bayeux/dpp :
@@ -26,7 +26,7 @@ namespace geomtools {
   class manager;
 }
 
-namespace mctools {
+namespace snemo {
   // Forward declaration :
   class simulated_data;
 
@@ -109,9 +109,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_SIMULATION_MODULE_H
+#endif // SNEMOSIMULATION_G4_SIMULATION_MODULE_H
 
 /*
 ** Local Variables: --

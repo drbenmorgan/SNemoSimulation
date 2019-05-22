@@ -32,7 +32,7 @@
 #include <G4RegionStore.hh>
 #include <G4StepLimiterBuilder.hh>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -200,10 +200,10 @@ namespace mctools {
 
       loggable_support::_initialize_logging_support(config_);
 
-      _factory_register_.set_label("mctools::g4::physics_list/factory");
+      _factory_register_.set_label("snemo::g4::physics_list/factory");
       _factory_register_.set_logging_priority(_logprio());
       _factory_register_.import(
-        DATATOOLS_FACTORY_GET_SYSTEM_REGISTER(mctools::g4::base_physics_constructor));
+        DATATOOLS_FACTORY_GET_SYSTEM_REGISTER(snemo::g4::base_physics_constructor));
 
       DT_LOG_DEBUG(_logprio(), "Physics list configuration : ");
       if (_logprio() >= datatools::logger::PRIO_DEBUG) {
@@ -829,15 +829,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::physics_list, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::physics_list, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::physics_list");
+  ocd_.set_class_name("snemo::g4::physics_list");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 simulation manager embedded physics list");
@@ -848,7 +848,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::physics_list, ocd_)
   // The class detailed documentation :
   ocd_.set_class_documentation("The Geant4 simulation manager class embedded               \n"
                                "physics list.                                              \n"
-                               "The ``mctools::g4::physics_list`` enables to:              \n"
+                               "The ``snemo::g4::physics_list`` enables to:              \n"
                                "                                                           \n"
                                " * use an official physics list published                  \n"
                                "   by the Geant4 API.                                      \n"
@@ -930,9 +930,9 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::physics_list, ocd_)
         "                                                                            \n"
         " physics_constructors.names : string[2] = \"particles\" \"electromagnetic\" \n"
         " physics_constructors.particles.id : string = \\                            \n"
-        "    \"mctools::g4::particles_physics_constructor\"                          \n"
+        "    \"snemo::g4::particles_physics_constructor\"                          \n"
         " physics_constructors.electromagnetic.id : string = \\                      \n"
-        "    \"mctools::g4::em_physics_constructor\"                                 \n"
+        "    \"snemo::g4::em_physics_constructor\"                                 \n"
         "                                                                            \n");
   }
 
@@ -1198,9 +1198,9 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::physics_list, ocd_)
     "  logging.priority    : string = \"fatal\"         \n"
     "  physics_constructors.names : string[2] = \"particles\" \"em\" \n"
     "  physics_constructors.particles.id     : string = "
-    "\"mctools::g4::particles_physics_constructor\" \n"
+    "\"snemo::g4::particles_physics_constructor\" \n"
     "  physics_constructors.particles.config : string = \"particles.def\" \n"
-    "  physics_constructors.em.id            : string = \"mctools::g4::em_physics_constructor\" \n"
+    "  physics_constructors.em.id            : string = \"snemo::g4::em_physics_constructor\" \n"
     "  physics_constructors.em.config        : string = \"em.def\" \n"
 
     "  using_production_cuts : boolean = true           \n"
@@ -1218,5 +1218,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::physics_list, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::physics_list' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::physics_list, "mctools::g4::physics_list")
+// Registration macro for class 'snemo::g4::physics_list' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::physics_list, "snemo::g4::physics_list")

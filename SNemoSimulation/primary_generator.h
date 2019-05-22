@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_PRIMARY_GENERATOR_H
-#define MCTOOLS_G4_PRIMARY_GENERATOR_H
+#ifndef SNEMOSIMULATION_G4_PRIMARY_GENERATOR_H
+#define SNEMOSIMULATION_G4_PRIMARY_GENERATOR_H
 
 // Standard library:
 #include <map>
@@ -47,7 +47,7 @@ namespace genvtx {
   class i_vertex_generator;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace biasing {
     class primary_event_bias;
@@ -66,10 +66,10 @@ namespace mctools {
       bool is_initialized() const;
 
       /// Set the run action object
-      void set_run_action(mctools::g4::run_action& run_action_);
+      void set_run_action(snemo::g4::run_action& run_action_);
 
       /// Set the event action object
-      void set_event_action(mctools::g4::event_action& event_action_);
+      void set_event_action(snemo::g4::event_action& event_action_);
 
       /// Check if a vertex generator is defined
       bool has_vertex_generator() const;
@@ -135,13 +135,13 @@ namespace mctools {
 
   } // namespace g4
 
-} // namespace mctools
+} // namespace snemo
 
 /// OCD support : interface
 #include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::primary_generator)
+DOCD_CLASS_DECLARATION(snemo::g4::primary_generator)
 
-#endif // MCTOOLS_G4_PRIMARY_GENERATOR_H
+#endif // SNEMOSIMULATION_G4_PRIMARY_GENERATOR_H
 
 /*
 ** Local Variables: --

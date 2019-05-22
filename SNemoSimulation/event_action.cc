@@ -42,7 +42,7 @@
 #include <mctools/biasing/primary_event_bias.h>
 #include <mctools/simulated_data.ipp>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -523,7 +523,7 @@ namespace mctools {
                iproc++) {
             /*
               const string & hit_proc_name = iproc->first;
-              cerr << "DEVEL: " << "mctools::g4::event_action::EndOfEventAction: "
+              cerr << "DEVEL: " << "snemo::g4::event_action::EndOfEventAction: "
               << "hit_proc_name = `" << hit_proc_name << "'" << endl;
             */
             ::mctools::base_step_hit_processor* hit_proc = iproc->second;
@@ -552,15 +552,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::event_action, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::event_action, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::event_action");
+  ocd_.set_class_name("snemo::g4::event_action");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 simulation mandatory event action");
@@ -591,5 +591,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::event_action, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::event_action' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::event_action, "mctools::g4::event_action")
+// Registration macro for class 'snemo::g4::event_action' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::event_action, "snemo::g4::event_action")

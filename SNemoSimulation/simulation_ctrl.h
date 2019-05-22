@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_SIMULATION_CTRL_H
-#define MCTOOLS_G4_SIMULATION_CTRL_H 1
+#ifndef SNEMOSIMULATION_G4_SIMULATION_CTRL_H
+#define SNEMOSIMULATION_G4_SIMULATION_CTRL_H 1
 
 // Third party:
 // - Boost :
@@ -22,7 +22,7 @@
 // This project:
 #include <SNemoSimulation/loggable_support.h>
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
 
     // Forward declarations
@@ -75,9 +75,9 @@ namespace mctools {
       uint32_t max_counts;
     };
   } // end of namespace g4
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_SIMULATION_CTRL_H
+#endif // SNEMOSIMULATION_G4_SIMULATION_CTRL_H
 
 /*
 ** Local Variables: --

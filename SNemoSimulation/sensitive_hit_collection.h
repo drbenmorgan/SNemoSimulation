@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_SENSITIVE_HIT_COLLECTION_H
-#define MCTOOLS_G4_SENSITIVE_HIT_COLLECTION_H 1
+#ifndef SNEMOSIMULATION_G4_SENSITIVE_HIT_COLLECTION_H
+#define SNEMOSIMULATION_G4_SENSITIVE_HIT_COLLECTION_H 1
 
 // Standard library:
 #include <vector>
@@ -23,7 +23,7 @@
 // - Geant4
 #include <G4VHitsCollection.hh>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -57,9 +57,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_SENSITIVE_HIT_COLLECTION_H
+#endif // SNEMOSIMULATION_G4_SENSITIVE_HIT_COLLECTION_H
 
 /*
 ** Local Variables: --

@@ -20,7 +20,7 @@
 #include "G4UnitsTable.hh"
 #include "G4VTouchable.hh"
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -40,7 +40,7 @@ namespace mctools {
           VerboseTrack();
         if (verboseLevel >= 3) {
           std::clog << std::endl;
-          std::clog << "mctools::g4::stepping_verbose::StepInfo " << std::endl
+          std::clog << "snemo::g4::stepping_verbose::StepInfo " << std::endl
                     << std::setw(6) << "Step num" << std::setw(6) << "X"
                     << "    " << std::setw(6) << "Y"
                     << "    " << std::setw(6) << "Z"
@@ -157,4 +157,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

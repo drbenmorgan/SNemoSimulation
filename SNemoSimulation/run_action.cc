@@ -59,7 +59,7 @@
 #include <mctools/simulated_data.h>
 #include <mctools/utils.h>
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
 
     //! \brief PIMPL-ized I/O working resources:
@@ -477,7 +477,7 @@ namespace mctools {
     void
     run_action::_build_run_header()
     {
-      _run_header_.set_description("mctools::g4 run header");
+      _run_header_.set_description("snemo::g4 run header");
 
       const mygsl::seed_manager& the_seed_manager = _manager_->get_seed_manager();
       std::vector<std::string> seed_labels;
@@ -495,7 +495,7 @@ namespace mctools {
     void
     run_action::_build_run_footer()
     {
-      _run_footer_.set_description("mctools::g4 run footer");
+      _run_footer_.set_description("snemo::g4 run footer");
 
       _run_footer_.store("number_of_processed_events", _number_of_processed_events_);
       _run_footer_.store("number_of_saved_events", _number_of_saved_events_);
@@ -810,15 +810,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::run_action, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::run_action");
+  ocd_.set_class_name("snemo::g4::run_action");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 simulation mandatory run action");
@@ -886,7 +886,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
                             "This flag may be activated when the Geant4 simulation         \n"
                             "engine is used from the ``g4_production`` executable.         \n"
                             "This flag must be deactivated when the Geant4 simulation      \n"
-                            "engine is used from the ``mctools::g4::simulation_module``    \n"
+                            "engine is used from the ``snemo::g4::simulation_module``    \n"
                             "class through a data processing pipeline because in this case \n"
                             "the pipeline generally implements its own I/O mechanisms.     \n");
   }
@@ -920,7 +920,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
       //.set_triggered_by("file.save")
       .set_long_description("This property is not taken into account if the *output file*  \n"
                             "attribute has already been set by a previous  call to the     \n"
-                            "``mctools::g4::run_action::set_output_file(..;)`` method.     \n"
+                            "``snemo::g4::run_action::set_output_file(..;)`` method.     \n"
                             "                                                              \n"
                             "Example::                                                     \n"
                             "                                                              \n"
@@ -947,7 +947,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
       .set_complex_triggering_conditions(true)
       .set_long_description("This property is not taken into account if the *output file*  \n"
                             "attribute has already been set by a previous  call to the     \n"
-                            "``mctools::g4::run_action::set_output_file(..;)`` method or   \n"
+                            "``snemo::g4::run_action::set_output_file(..;)`` method or   \n"
                             "by the ``file.directory`` property.                           \n"
                             "                                                              \n"
                             "Example::                                                     \n"
@@ -965,7 +965,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
       .set_complex_triggering_conditions(true)
       .set_long_description("This property is not taken into account if the *output file*  \n"
                             "attribute has already been set by a previous  call to the     \n"
-                            "``mctools::g4::run_action::set_output_file(..;)`` method or   \n"
+                            "``snemo::g4::run_action::set_output_file(..;)`` method or   \n"
                             "by the ``file.directory`` property.                           \n"
                             "                                                              \n"
                             "Example::                                                     \n"
@@ -985,7 +985,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
       .set_complex_triggering_conditions(true)
       .set_long_description("This property is not taken into account if the *output file*  \n"
                             "attribute has already been set by a previous  call to the     \n"
-                            "``mctools::g4::run_action::set_output_file(..;)`` method or   \n"
+                            "``snemo::g4::run_action::set_output_file(..;)`` method or   \n"
                             "by the ``file.directory`` property.                           \n"
                             "                                                              \n"
                             "Allowed values:                                               \n"
@@ -1011,7 +1011,7 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
       .set_complex_triggering_conditions(true)
       .set_long_description("This property is not taken into account if the *output file*  \n"
                             "attribute has already been set by a previous  call to the     \n"
-                            "``mctools::g4::run_action::set_output_file(..;)`` method or   \n"
+                            "``snemo::g4::run_action::set_output_file(..;)`` method or   \n"
                             "by the ``file.directory`` property.                           \n"
                             "                                                              \n"
                             "This property is not taken into account for Brio format which \n"
@@ -1091,5 +1091,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::run_action, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::manager' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::run_action, "mctools::g4::run_action")
+// Registration macro for class 'snemo::g4::manager' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::run_action, "snemo::g4::run_action")

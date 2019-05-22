@@ -10,7 +10,7 @@
 #include <datatools/exception.h>
 #include <datatools/properties.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -67,7 +67,7 @@ namespace mctools {
 
     DATATOOLS_FACTORY_SYSTEM_REGISTER_IMPLEMENTATION(
       base_physics_constructor,
-      "mctools::g4::base_physics_constructor/__system__")
+      "snemo::g4::base_physics_constructor/__system__")
 
     bool
     base_physics_constructor::is_initialized() const
@@ -209,4 +209,4 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo

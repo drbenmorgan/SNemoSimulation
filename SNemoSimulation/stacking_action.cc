@@ -34,7 +34,7 @@
 // This project:
 #include <SNemoSimulation/stacking_action.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -140,7 +140,7 @@ namespace mctools {
         G4VPhysicalVolume* g4_volume_phys =
           _g4_navigator_->LocateGlobalPointAndSetup(pos, NULL, false);
         G4LogicalVolume* g4_volume_log = g4_volume_phys->GetLogicalVolume();
-        // std::cerr << "DEVEL: mctools::g4::stacking::ClassifyNewTrack: g4_volume_log = '"
+        // std::cerr << "DEVEL: snemo::g4::stacking::ClassifyNewTrack: g4_volume_log = '"
         //        << g4_volume_log->GetName () << "'" << endl;
 
         // Kill by material :
@@ -209,15 +209,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stacking_action, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::stacking_action, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::stacking_action");
+  ocd_.set_class_name("snemo::g4::stacking_action");
 
   // The class terse description :
   ocd_.set_class_description("The Geant4 simulation optional stacking action");
@@ -332,5 +332,5 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::stacking_action, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::manager' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::stacking_action, "mctools::g4::stacking_action")
+// Registration macro for class 'snemo::g4::manager' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::stacking_action, "snemo::g4::stacking_action")

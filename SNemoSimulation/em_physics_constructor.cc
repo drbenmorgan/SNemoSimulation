@@ -101,20 +101,20 @@
 #include <SNemoSimulation/processes/em_extra_models.h>
 #include <SNemoSimulation/processes/em_model_factory.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
     DATATOOLS_FACTORY_SYSTEM_AUTO_REGISTRATION_IMPLEMENTATION(base_physics_constructor,
                                                               em_physics_constructor,
-                                                              "mctools::g4::em_physics_constructor")
+                                                              "snemo::g4::em_physics_constructor")
 
     // PIMPL-ized working data:
     struct em_physics_constructor::_work_type_ {
-      std::map<std::string, ::mctools::g4::processes::em_extra_model> em_extra_models;
+      std::map<std::string, ::snemo::g4::processes::em_extra_model> em_extra_models;
       G4EmConfigurator em_configurator;
       int em_configurator_verbosity;
-      ::mctools::g4::processes::em_model_factory em_model_fact;
+      ::snemo::g4::processes::em_model_factory em_model_fact;
     };
 
     // *** em_physics_constructor::region_deexcitation_type *** //
@@ -577,10 +577,10 @@ namespace mctools {
           extra_models_config.export_and_rename_starting_with(
             extra_model_config, em_xmodel_prefix.str(), "");
           {
-            mctools::g4::processes::em_extra_model dummy;
+            snemo::g4::processes::em_extra_model dummy;
             _grab_work_().em_extra_models[em_xmodel_label] = dummy;
           }
-          mctools::g4::processes::em_extra_model& em_xmodel =
+          snemo::g4::processes::em_extra_model& em_xmodel =
             _grab_work_().em_extra_models.find(em_xmodel_label)->second;
           em_xmodel.set_name(em_xmodel_label);
           DT_LOG_NOTICE(_logprio(),
@@ -600,12 +600,12 @@ namespace mctools {
       _grab_work_().em_model_fact.initialize();
 
       DT_LOG_DEBUG(_logprio(), "Apply EM extra models to the Geant4 EM configurator...");
-      for (std::map<std::string, ::mctools::g4::processes::em_extra_model>::const_iterator
+      for (std::map<std::string, ::snemo::g4::processes::em_extra_model>::const_iterator
              i = _grab_work_().em_extra_models.begin();
            i != _grab_work_().em_extra_models.end();
            i++){
         const std::string & em_xmodel_label = i->first;
-        const ::mctools::g4::processes::em_extra_model & em_xmodel = i->second;
+        const ::snemo::g4::processes::em_extra_model & em_xmodel = i->second;
         // Declare extra models to the embedded Geant4 EM configurator:
         DT_LOG_NOTICE(_logprio(), "Declare extra model '" << em_xmodel_label << "' in the Geant4 EM
       configurator..."); em_xmodel.apply_to_g4(_grab_work_().em_configurator,
@@ -937,12 +937,12 @@ namespace mctools {
       _grab_work_().em_model_fact.initialize();
 
       DT_LOG_DEBUG(_logprio(), "Apply EM extra models to the Geant4 EM configurator...");
-      for (std::map<std::string, ::mctools::g4::processes::em_extra_model>::const_iterator i =
+      for (std::map<std::string, ::snemo::g4::processes::em_extra_model>::const_iterator i =
              _grab_work_().em_extra_models.begin();
            i != _grab_work_().em_extra_models.end();
            i++) {
         const std::string& em_xmodel_label = i->first;
-        const ::mctools::g4::processes::em_extra_model& em_xmodel = i->second;
+        const ::snemo::g4::processes::em_extra_model& em_xmodel = i->second;
         // Declare extra models to the embedded Geant4 EM configurator:
         DT_LOG_NOTICE(_logprio(),
                       "Declare extra model '" << em_xmodel_label
@@ -1432,15 +1432,15 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /** Opening macro for implementation
  *  This macro must be used outside of any namespace.
  */
-DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::em_physics_constructor, ocd_)
+DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::em_physics_constructor, ocd_)
 {
   // The class name :
-  ocd_.set_class_name("mctools::g4::em_physics_constructor");
+  ocd_.set_class_name("snemo::g4::em_physics_constructor");
 
   // The class terse description :
   ocd_.set_class_description(
@@ -1805,6 +1805,6 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(mctools::g4::em_physics_constructor, ocd_)
 }
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
-// Registration macro for class 'mctools::g4::em_physics_constructor' :
-DOCD_CLASS_SYSTEM_REGISTRATION(mctools::g4::em_physics_constructor,
-                               "mctools::g4::em_physics_constructor")
+// Registration macro for class 'snemo::g4::em_physics_constructor' :
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::em_physics_constructor,
+                               "snemo::g4::em_physics_constructor")

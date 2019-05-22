@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_PROCESSES_EM_MODEL_FACTORY_H
-#define MCTOOLS_G4_PROCESSES_EM_MODEL_FACTORY_H
+#ifndef SNEMOSIMULATION_G4_PROCESSES_EM_MODEL_FACTORY_H
+#define SNEMOSIMULATION_G4_PROCESSES_EM_MODEL_FACTORY_H
 
 // Standard Library:
 #include <string>
@@ -25,7 +25,7 @@
 // Bayeux/datatools:
 #include <datatools/properties.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -105,9 +105,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_PROCESSES_EM_MODEL_FACTORY_H
+#endif // SNEMOSIMULATION_G4_PROCESSES_EM_MODEL_FACTORY_H
 
 /*
 ** Local Variables: --

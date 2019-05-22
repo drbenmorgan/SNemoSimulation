@@ -17,7 +17,7 @@
 // This project:
 #include <SNemoSimulation/manager.h>
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
     simulation_ctrl::simulation_ctrl(manager& a_simulation_manager, uint32_t a_max_counts)
     {
@@ -99,7 +99,7 @@ namespace mctools {
     }
 
   } // end of namespace g4
-} // end of namespace mctools
+} // end of namespace snemo
 
 /*
 ** Local Variables: --

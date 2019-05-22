@@ -30,8 +30,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_MANAGER_H
-#define MCTOOLS_G4_MANAGER_H 1
+#ifndef SNEMOSIMULATION_G4_MANAGER_H
+#define SNEMOSIMULATION_G4_MANAGER_H 1
 
 // Standard library:
 #include <map>
@@ -88,7 +88,7 @@ namespace datatools {
   class service_manager;
 }
 
-namespace mctools {
+namespace snemo {
   namespace g4 {
     // Forward declarations
     class run_action;
@@ -597,14 +597,14 @@ namespace mctools {
       G4UImanager* _g4_UI_ = nullptr;                        //!< Geant4 UI manager
 
       // User specified G4 interfaces :
-      mctools::g4::detector_construction* _user_detector_construction_ = nullptr;
-      mctools::g4::physics_list* _user_physics_list_ = nullptr;
-      mctools::g4::primary_generator* _user_primary_generator_ = nullptr;
-      mctools::g4::run_action* _user_run_action_ = nullptr;
-      mctools::g4::event_action* _user_event_action_ = nullptr;
-      mctools::g4::tracking_action* _user_tracking_action_ = nullptr;
-      mctools::g4::stepping_action* _user_stepping_action_ = nullptr;
-      mctools::g4::stacking_action* _user_stacking_action_ = nullptr;
+      snemo::g4::detector_construction* _user_detector_construction_ = nullptr;
+      snemo::g4::physics_list* _user_physics_list_ = nullptr;
+      snemo::g4::primary_generator* _user_primary_generator_ = nullptr;
+      snemo::g4::run_action* _user_run_action_ = nullptr;
+      snemo::g4::event_action* _user_event_action_ = nullptr;
+      snemo::g4::tracking_action* _user_tracking_action_ = nullptr;
+      snemo::g4::stepping_action* _user_stepping_action_ = nullptr;
+      snemo::g4::stacking_action* _user_stacking_action_ = nullptr;
 
 #ifdef G4VIS_USE
       // G4 visualization, if you choose to have it!
@@ -647,9 +647,9 @@ namespace mctools {
       CT_map _CTs_;                             //!< CPU time statistics
     };
   } // end of namespace g4
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_MANAGER_H
+#endif // SNEMOSIMULATION_G4_MANAGER_H
 
 // Local Variables: --
 // mode: c++ --

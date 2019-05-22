@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_REGION_TOOLS_H
-#define MCTOOLS_G4_REGION_TOOLS_H
+#ifndef SNEMOSIMULATION_G4_REGION_TOOLS_H
+#define SNEMOSIMULATION_G4_REGION_TOOLS_H
 
 // Standard library:
 #include <iostream>
@@ -31,7 +31,7 @@
 // - Bayeux/geomtools :
 #include <geomtools/manager.h>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -154,13 +154,13 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
 /// OCD support : interface
 #include <datatools/ocd_macros.h>
-DOCD_CLASS_DECLARATION(mctools::g4::region_info)
+DOCD_CLASS_DECLARATION(snemo::g4::region_info)
 
-#endif // MCTOOLS_G4_REGION_TOOLS_H
+#endif // SNEMOSIMULATION_G4_REGION_TOOLS_H
 
 /*
 ** Local Variables: --

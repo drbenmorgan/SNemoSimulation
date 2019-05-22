@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_EM_FIELD_G4_STUFF_H
-#define MCTOOLS_G4_EM_FIELD_G4_STUFF_H
+#ifndef SNEMOSIMULATION_G4_EM_FIELD_G4_STUFF_H
+#define SNEMOSIMULATION_G4_EM_FIELD_G4_STUFF_H
 
 // This project:
 #include <SNemoSimulation/loggable_support.h>
@@ -35,7 +35,7 @@ namespace datatools {
   class properties;
 }
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -197,9 +197,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_EM_FIELD_G4_STUFF_H
+#endif // SNEMOSIMULATION_G4_EM_FIELD_G4_STUFF_H
 
 /*
 ** Local Variables: --

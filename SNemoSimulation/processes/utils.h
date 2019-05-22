@@ -13,8 +13,8 @@
  *
  */
 
-#ifndef MCTOOLS_G4_PROCESSES_UTILS_H
-#define MCTOOLS_G4_PROCESSES_UTILS_H
+#ifndef SNEMOSIMULATION_G4_PROCESSES_UTILS_H
+#define SNEMOSIMULATION_G4_PROCESSES_UTILS_H
 
 // Standard Library:
 #include <string>
@@ -23,7 +23,7 @@
 // - Geant4:
 #include <G4ProcessType.hh>
 
-namespace mctools {
+namespace snemo {
 
   namespace g4 {
 
@@ -41,9 +41,9 @@ namespace mctools {
 
   } // end of namespace g4
 
-} // end of namespace mctools
+} // end of namespace snemo
 
-#endif // MCTOOLS_G4_PROCESSES_UTILS_H
+#endif // SNEMOSIMULATION_G4_PROCESSES_UTILS_H
 
 /*
 ** Local Variables: --
