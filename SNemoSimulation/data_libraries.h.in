@@ -41,26 +41,18 @@
 namespace {
 class geant4_data_library {
  public:
-
- public:
   geant4_data_library() : map_() {
     boost::assign::insert(map_)@MCTOOLS_G4_DATA_ASSIGNMENTS@;
   }
 
-  ~geant4_data_library() {}
-
   void configure_data() const {
-    DLMap::const_iterator iter(map_.begin());
-    DLMap::const_iterator end(map_.end());
-
-    for(; iter!=end; ++iter) {
-      setenv((*iter).first.c_str(),(*iter).second.c_str(),0);
+    for(const auto& p : map_) {
+      setenv(p.first.c_str(), p.second.c_str(),0);
     }
   }
 
  private:
-  typedef std::map<std::string,std::string> DLMap;
-  DLMap map_;
+  std::map<std::string,std::string> map_;
 };
 }
 
