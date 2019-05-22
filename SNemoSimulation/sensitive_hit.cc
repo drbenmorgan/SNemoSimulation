@@ -12,13 +12,13 @@ namespace snemo {
 
   namespace g4 {
 
-    const base_step_hit&
+    const mctools::base_step_hit&
     sensitive_hit::get_hit_data() const
     {
       return _hit_data_;
     }
 
-    base_step_hit&
+    mctools::base_step_hit&
     sensitive_hit::grab_hit_data()
     {
       return _hit_data_;

@@ -410,13 +410,13 @@ namespace snemo {
       void reset_output_data_format();
 
       /// Set the output data file format
-      void set_output_data_format(io_utils::data_format_type);
+      void set_output_data_format(mctools::io_utils::data_format_type);
 
       /// Set the output data bank label(for "bank" output format only)
       void set_output_data_bank_label(const std::string&);
 
       /// Return the output data file format
-      io_utils::data_format_type get_output_data_format() const;
+      mctools::io_utils::data_format_type get_output_data_format() const;
 
       /// Set the output data file name
       void set_output_data_file(const std::string&);
@@ -629,7 +629,7 @@ namespace snemo {
       std::string _input_prng_states_file_; //!< Input filename for loading of PRNG internal states
       std::string
         _output_prng_states_file_; //!< Output filename for storage of PRNG internal states
-      io_utils::data_format_type
+      mctools::io_utils::data_format_type
         _output_data_format_; //!< The data format of the output file ("plain" or "bank")
       std::string _output_data_bank_label_; //!< The label of the data bank used to store simulated
                                             //!< data ("bank" format only)

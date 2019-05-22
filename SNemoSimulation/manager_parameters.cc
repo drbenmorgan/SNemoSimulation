@@ -230,7 +230,7 @@ namespace snemo {
         a_manager.set_output_data_format_by_label(a_params.output_data_format);
       }
 
-      if (a_manager.get_output_data_format() == io_utils::DATA_FORMAT_BANK) {
+      if (a_manager.get_output_data_format() == mctools::io_utils::DATA_FORMAT_BANK) {
         if (!a_params.output_data_bank_label.empty()) {
           a_manager.set_output_data_bank_label(a_params.output_data_bank_label);
         }

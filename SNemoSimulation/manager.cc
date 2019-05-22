@@ -843,8 +843,8 @@ namespace snemo {
     void
     manager::set_output_data_format_by_label(const std::string& ff_)
     {
-      io_utils::data_format_type df = io_utils::label_to_data_format(ff_);
-      DT_THROW_IF(df == io_utils::DATA_FORMAT_INVALID,
+      mctools::io_utils::data_format_type df = mctools::io_utils::label_to_data_format(ff_);
+      DT_THROW_IF(df == mctools::io_utils::DATA_FORMAT_INVALID,
                   std::logic_error,
                   "Invalid output data format '" << ff_ << "'!");
       set_output_data_format(df);
@@ -853,16 +853,16 @@ namespace snemo {
     void
     manager::reset_output_data_format()
     {
-      _output_data_format_ = io_utils::DATA_FORMAT_INVALID;
+      _output_data_format_ = mctools::io_utils::DATA_FORMAT_INVALID;
     }
 
     void
-    manager::set_output_data_format(io_utils::data_format_type of_)
+    manager::set_output_data_format(mctools::io_utils::data_format_type of_)
     {
       _output_data_format_ = of_;
-      if (_output_data_format_ == io_utils::DATA_FORMAT_BANK) {
+      if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_BANK) {
         if (_output_data_bank_label_.empty()) {
-          set_output_data_bank_label(event_utils::event_default_simulated_data_label());
+          set_output_data_bank_label(mctools::event_utils::event_default_simulated_data_label());
         }
       }
     }
@@ -871,15 +871,15 @@ namespace snemo {
     manager::set_output_data_bank_label(const std::string& bl_)
     {
       _output_data_bank_label_ = bl_;
-      if (_output_data_format_ != io_utils::DATA_FORMAT_INVALID) {
-        set_output_data_format(io_utils::DATA_FORMAT_BANK);
+      if (_output_data_format_ != mctools::io_utils::DATA_FORMAT_INVALID) {
+        set_output_data_format(mctools::io_utils::DATA_FORMAT_BANK);
       }
-      DT_THROW_IF(_output_data_format_ != io_utils::DATA_FORMAT_BANK,
+      DT_THROW_IF(_output_data_format_ != mctools::io_utils::DATA_FORMAT_BANK,
                   std::logic_error,
                   "Cannot set output data bank label with the plain output data format!");
     }
 
-    io_utils::data_format_type
+    mctools::io_utils::data_format_type
     manager::get_output_data_format() const
     {
       return _output_data_format_;
@@ -1377,7 +1377,7 @@ namespace snemo {
       _input_prng_seeds_file_ = "";
       _output_prng_seeds_file_ = "";
 
-      _output_data_format_ = io_utils::DATA_FORMAT_INVALID;
+      _output_data_format_ = mctools::io_utils::DATA_FORMAT_INVALID;
       _output_data_bank_label_ = "";
 
       _interactive_ = false;
@@ -1755,11 +1755,11 @@ namespace snemo {
       const datatools::properties& run_action_config =
         _multi_config_->get("run_action").get_properties();
       _user_run_action_ = new run_action(*this);
-      if (_output_data_format_ == io_utils::DATA_FORMAT_INVALID) {
-        _output_data_format_ = io_utils::DATA_FORMAT_PLAIN;
+      if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_INVALID) {
+        _output_data_format_ = mctools::io_utils::DATA_FORMAT_PLAIN;
       }
       _user_run_action_->set_output_data_format(_output_data_format_);
-      if (_output_data_format_ == io_utils::DATA_FORMAT_BANK) {
+      if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_BANK) {
         _user_run_action_->set_output_data_bank_label(_output_data_bank_label_);
       }
       if (!_output_data_file_.empty()) {

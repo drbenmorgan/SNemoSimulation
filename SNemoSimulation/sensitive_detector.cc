@@ -326,7 +326,7 @@ namespace snemo {
       {
         // Record track id
         const std::string trkid_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_TRACK_ID);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_TRACK_ID);
         if (config_.has_flag(trkid_key)) {
           // this method enables the sensitive detector to record the track ID
           // as an auxiliary properties of the step hit
@@ -337,7 +337,7 @@ namespace snemo {
       {
         // Record boundaries
         const std::string trkid_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_BOUNDARIES);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_BOUNDARIES);
         if (config_.has_flag(trkid_key)) {
           // this method enables the sensitive detector to record the boundary flags
           // as an auxiliary properties of the step hit
@@ -347,8 +347,8 @@ namespace snemo {
 
       {
         // Record primary particle flag
-        const std::string pp_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_PRIMARY_PARTICLE);
+        const std::string pp_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_RECORD_PRIMARY_PARTICLE);
         if (config_.has_flag(pp_key)) {
           // this method enables the sensitive detector to record a dedicated flag
           // as an auxiliary properties of the step hit to flag a primary track
@@ -358,8 +358,8 @@ namespace snemo {
 
       {
         // Record alpha quenching flag
-        const std::string aq_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_ALPHA_QUENCHING);
+        const std::string aq_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_RECORD_ALPHA_QUENCHING);
         if (config_.has_flag(aq_key)) {
           // this method enables to add a special flag to the step hit
           // for delta rays produced along the track of alpha particles;
@@ -380,15 +380,15 @@ namespace snemo {
       {
         // Record major track
         const std::string rmt_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_MAJOR_TRACK);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_MAJOR_TRACK);
         if (config_.has_flag(rmt_key)) {
           set_record_major_track(true);
         }
       }
 
       {
-        const std::string mtme_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_MAJOR_TRACK_MINIMUM_ENERGY);
+        const std::string mtme_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_MAJOR_TRACK_MINIMUM_ENERGY);
         if (config_.has_key(mtme_key)) {
           const double e_min = config_.fetch_real(mtme_key) * CLHEP::keV;
           DT_THROW_IF(e_min < 0,
@@ -401,8 +401,8 @@ namespace snemo {
 
       {
         // Record creator process
-        const std::string record_creator_process_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_CREATOR_PROCESS);
+        const std::string record_creator_process_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_RECORD_CREATOR_PROCESS);
         if (config_.has_flag(record_creator_process_key)) {
           set_record_creator_process(true);
         }
@@ -410,8 +410,8 @@ namespace snemo {
 
       {
         // Record sensitive category where particle is created
-        const std::string record_creator_category_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_CREATOR_CATEGORY);
+        const std::string record_creator_category_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_RECORD_CREATOR_CATEGORY);
         if (config_.has_flag(record_creator_category_key)) {
           set_record_creator_category(true);
         }
@@ -420,7 +420,7 @@ namespace snemo {
       {
         // 2011-08-26 FM: new option : 'record material'
         const std::string record_material_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_MATERIAL);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_MATERIAL);
         if (config_.has_flag(record_material_key)) {
           set_record_material(true);
         }
@@ -428,8 +428,8 @@ namespace snemo {
 
       {
         // 2011-08-26 FM: new option : 'record sensitive category'
-        const std::string record_sensitive_category_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_SENSITIVE_CATEGORY);
+        const std::string record_sensitive_category_key = geomtools::sensitive::make_key(
+          mctools::sensitive_utils::SENSITIVE_RECORD_SENSITIVE_CATEGORY);
         if (config_.has_flag(record_sensitive_category_key)) {
           set_record_sensitive_category(true);
         }
@@ -438,7 +438,7 @@ namespace snemo {
       {
         // Record momentum
         const std::string record_momentum_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_MOMENTUM);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_MOMENTUM);
         if (config_.has_flag(record_momentum_key)) {
           set_record_momentum(true);
         }
@@ -447,7 +447,7 @@ namespace snemo {
       {
         // Record kinetic energy
         const std::string record_kinetic_energy_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_KINETIC_ENERGY);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_KINETIC_ENERGY);
         if (config_.has_flag(record_kinetic_energy_key)) {
           set_record_kinetic_energy(true);
         }
@@ -456,7 +456,7 @@ namespace snemo {
       {
         // Record true step length
         const std::string record_step_length_key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_RECORD_STEP_LENGTH);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_RECORD_STEP_LENGTH);
         if (config_.has_flag(record_step_length_key)) {
           set_record_step_length(true);
         }
@@ -464,7 +464,7 @@ namespace snemo {
 
       {
         const std::string key =
-          geomtools::sensitive::make_key(sensitive_utils::SENSITIVE_HITS_BUFFER_CAPACITY);
+          geomtools::sensitive::make_key(mctools::sensitive_utils::SENSITIVE_HITS_BUFFER_CAPACITY);
         if (config_.has_key(key)) {
           const int cap = config_.fetch_integer(key);
           DT_THROW_IF(cap < 0,
@@ -479,39 +479,41 @@ namespace snemo {
       }
 
       // Drop steps with no energy deposit
-      if (geomtools::sensitive::has_key(config_,
-                                        sensitive_utils::SENSITIVE_DROP_ZERO_ENERGY_DEPOSIT)) {
+      if (geomtools::sensitive::has_key(
+            config_, mctools::sensitive_utils::SENSITIVE_DROP_ZERO_ENERGY_DEPOSIT)) {
         const bool flag = geomtools::sensitive::has_flag(
-          config_, sensitive_utils::SENSITIVE_DROP_ZERO_ENERGY_DEPOSIT);
+          config_, mctools::sensitive_utils::SENSITIVE_DROP_ZERO_ENERGY_DEPOSIT);
         set_drop_zero_energy_deposit_steps(flag);
       }
 
       // Storing Geant4 volume properties
-      if (geomtools::sensitive::has_key(config_,
-                                        sensitive_utils::SENSITIVE_RECORD_G4_VOLUME_INFOS)) {
+      if (geomtools::sensitive::has_key(
+            config_, mctools::sensitive_utils::SENSITIVE_RECORD_G4_VOLUME_INFOS)) {
         const bool flag = geomtools::sensitive::has_flag(
-          config_, sensitive_utils::SENSITIVE_RECORD_G4_VOLUME_INFOS);
+          config_, mctools::sensitive_utils::SENSITIVE_RECORD_G4_VOLUME_INFOS);
         set_record_g4_volume_properties(flag);
       }
 
       // Tracking gamma
-      if (geomtools::sensitive::has_key(config_, sensitive_utils::SENSITIVE_TRACK_GAMMA)) {
+      if (geomtools::sensitive::has_key(config_, mctools::sensitive_utils::SENSITIVE_TRACK_GAMMA)) {
         const bool flag =
-          geomtools::sensitive::has_flag(config_, sensitive_utils::SENSITIVE_TRACK_GAMMA);
+          geomtools::sensitive::has_flag(config_, mctools::sensitive_utils::SENSITIVE_TRACK_GAMMA);
         set_track_gamma(flag);
       }
 
       // Tracking optical photon
-      if (geomtools::sensitive::has_key(config_, sensitive_utils::SENSITIVE_TRACK_OPTICAL_PHOTON)) {
-        const bool flag =
-          geomtools::sensitive::has_flag(config_, sensitive_utils::SENSITIVE_TRACK_OPTICAL_PHOTON);
+      if (geomtools::sensitive::has_key(config_,
+                                        mctools::sensitive_utils::SENSITIVE_TRACK_OPTICAL_PHOTON)) {
+        const bool flag = geomtools::sensitive::has_flag(
+          config_, mctools::sensitive_utils::SENSITIVE_TRACK_OPTICAL_PHOTON);
         set_track_optical_photon(flag);
       }
 
       // Tracking neutron:
-      if (geomtools::sensitive::has_key(config_, sensitive_utils::SENSITIVE_TRACK_NEUTRON)) {
-        const bool flag =
-          geomtools::sensitive::has_flag(config_, sensitive_utils::SENSITIVE_TRACK_NEUTRON);
+      if (geomtools::sensitive::has_key(config_,
+                                        mctools::sensitive_utils::SENSITIVE_TRACK_NEUTRON)) {
+        const bool flag = geomtools::sensitive::has_flag(
+          config_, mctools::sensitive_utils::SENSITIVE_TRACK_NEUTRON);
         set_track_neutron(flag);
       }
 
@@ -960,8 +962,9 @@ namespace snemo {
 
       if (_record_g4_volume_properties_) {
         G4VPhysicalVolume* volume = step_->GetTrack()->GetVolume();
-        hit_aux.store_string(sensitive_utils::SENSITIVE_G4_VOLUME_NAME_KEY, volume->GetName());
-        hit_aux.store_integer(sensitive_utils::SENSITIVE_G4_VOLUME_COPY_NUMBER_KEY,
+        hit_aux.store_string(mctools::sensitive_utils::SENSITIVE_G4_VOLUME_NAME_KEY,
+                             volume->GetName());
+        hit_aux.store_integer(mctools::sensitive_utils::SENSITIVE_G4_VOLUME_COPY_NUMBER_KEY,
                               volume->GetCopyNo());
       }
 

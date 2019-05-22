@@ -1069,7 +1069,7 @@ namespace snemo {
       for (SHPF_type::processor_dict_type::const_iterator iSHP = _SHPF_.get_processors().begin();
            iSHP != _SHPF_.get_processors().end();
            ++iSHP) {
-        const base_step_hit_processor* processor = iSHP->second;
+        const mctools::base_step_hit_processor* processor = iSHP->second;
         const std::string& hit_category = processor->get_hit_category();
         if (_g4_manager_ != nullptr) {
           if (_g4_manager_->forbids_private_hits()) {
@@ -1305,7 +1305,7 @@ namespace snemo {
            iSHP != _SHPF_.get_processors().end();
            ++iSHP) {
         const std::string& processor_name = iSHP->first;
-        base_step_hit_processor* processor = iSHP->second;
+        mctools::base_step_hit_processor* processor = iSHP->second;
         const std::string& hit_category = processor->get_hit_category();
         if (_g4_manager_ != nullptr) {
           if (_g4_manager_->forbids_private_hits()) {
@@ -2417,5 +2417,4 @@ DOCD_CLASS_IMPLEMENT_LOAD_BEGIN(snemo::g4::detector_construction, ocd_)
 DOCD_CLASS_IMPLEMENT_LOAD_END() // Closing macro for implementation
 
 // Registration macro for class 'snemo::g4::detector_construction' :
-DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::detector_construction,
-                               "snemo::g4::detector_construction")
+DOCD_CLASS_SYSTEM_REGISTRATION(snemo::g4::detector_construction, "snemo::g4::detector_construction")

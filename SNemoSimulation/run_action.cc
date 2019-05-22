@@ -200,7 +200,7 @@ namespace snemo {
     }
 
     void
-    run_action::set_output_data_format(io_utils::data_format_type odf_)
+    run_action::set_output_data_format(mctools::io_utils::data_format_type odf_)
     {
       _output_data_format_ = odf_;
       _save_data_ = true;
@@ -210,10 +210,10 @@ namespace snemo {
     void
     run_action::set_output_data_bank_label(const std::string& bl_)
     {
-      if (_output_data_format_ != io_utils::DATA_FORMAT_INVALID) {
-        set_output_data_format(io_utils::DATA_FORMAT_BANK);
+      if (_output_data_format_ != mctools::io_utils::DATA_FORMAT_INVALID) {
+        set_output_data_format(mctools::io_utils::DATA_FORMAT_BANK);
       }
-      DT_THROW_IF(_output_data_format_ != io_utils::DATA_FORMAT_BANK,
+      DT_THROW_IF(_output_data_format_ != mctools::io_utils::DATA_FORMAT_BANK,
                   std::logic_error,
                   "Cannot set output data bank label with the plain output data format!");
       _output_data_bank_label_ = bl_;
@@ -297,7 +297,7 @@ namespace snemo {
       _number_of_processed_events_ = 0;
       _number_of_events_modulo_ = NUMBER_OF_EVENTS_MODULO_NONE;
       _save_data_ = false;
-      _output_data_format_ = io_utils::DATA_FORMAT_INVALID;
+      _output_data_format_ = mctools::io_utils::DATA_FORMAT_INVALID;
       _output_file_preserve_ = true;
       _output_file_dir_ = ".";
       _output_file_prefix_ = "mctools_g4_";
@@ -306,8 +306,8 @@ namespace snemo {
       _output_file_ = "";
       _manager_ = 0;
       _event_action_ = 0;
-      _brio_general_info_store_label_ = io_utils::GENERAL_INFO_STORE;
-      _brio_plain_simulated_data_store_label_ = io_utils::PLAIN_SIMULATED_DATA_STORE;
+      _brio_general_info_store_label_ = mctools::io_utils::GENERAL_INFO_STORE;
+      _brio_plain_simulated_data_store_label_ = mctools::io_utils::PLAIN_SIMULATED_DATA_STORE;
       return;
     }
 
@@ -371,12 +371,12 @@ namespace snemo {
 
       if (_save_data_) {
 
-        if (_output_data_format_ == io_utils::DATA_FORMAT_INVALID) {
+        if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_INVALID) {
           if (a_config.has_key("file.data_format")) {
             const std::string& data_format_label = a_config.fetch_string("file.data_format");
-            io_utils::data_format_type data_format =
-              io_utils::label_to_data_format(data_format_label);
-            DT_THROW_IF(data_format == io_utils::DATA_FORMAT_INVALID,
+            mctools::io_utils::data_format_type data_format =
+              mctools::io_utils::label_to_data_format(data_format_label);
+            DT_THROW_IF(data_format == mctools::io_utils::DATA_FORMAT_INVALID,
                         std::logic_error,
                         "Invalid data format '" << data_format_label << "'!");
             set_output_data_format(data_format);
@@ -597,7 +597,7 @@ namespace snemo {
         }
 
         std::string output_file_name = _output_file_;
-        if (_output_data_format_ == io_utils::DATA_FORMAT_BANK) {
+        if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_BANK) {
           DT_LOG_DEBUG(_logprio(), "Initializing the 'bank' data format...");
           // Bank data format:
           // Instantiate an output module:
@@ -712,7 +712,7 @@ namespace snemo {
       // Close the data writer:
       if (_save_data_) {
         DT_LOG_DEBUG(_logprio(), "Closing the data writer for run #" << a_run->GetRunID() << "...");
-        if (_output_data_format_ == io_utils::DATA_FORMAT_BANK) {
+        if (_output_data_format_ == mctools::io_utils::DATA_FORMAT_BANK) {
           // Bank data format:
           if (has_out_module()) {
             if (_io_work_->out_module->is_initialized()) {

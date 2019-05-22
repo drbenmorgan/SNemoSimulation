@@ -47,11 +47,13 @@ namespace genvtx {
   class i_vertex_generator;
 }
 
-namespace snemo {
-
+namespace mctools {
   namespace biasing {
     class primary_event_bias;
   }
+}
+
+namespace snemo {
 
   namespace g4 {
 

@@ -44,10 +44,11 @@ namespace brio {
 namespace dpp {
   class output_module;
 }
+namespace mctools {
+  class simulated_data;
+}
 
 namespace snemo {
-
-  class simulated_data;
 
   namespace g4 {
 
@@ -98,7 +99,7 @@ namespace snemo {
       void reset_number_of_saved_events();
 
       /// Set the output data format
-      void set_output_data_format(io_utils::data_format_type);
+      void set_output_data_format(mctools::io_utils::data_format_type);
 
       /// Set the output data bank label
       void set_output_data_bank_label(const std::string&);
@@ -195,7 +196,7 @@ namespace snemo {
 
       // I/O :
       bool _save_data_ = false; //!< Flag to save event data
-      io_utils::data_format_type
+      mctools::io_utils::data_format_type
         _output_data_format_; //!< The data format of the output file ("plain" or "bank")
       std::string _output_data_bank_label_;  //!< The label of the data bank used to store simulated
                                              //!< data ("bank" format only)
